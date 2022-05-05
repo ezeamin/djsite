@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Koulen&family=Nunito:wght@200&display=swap");
+
+html {
+  font-family: "Nunito", sans-serif;
+}
+
+.main__title {
+  font-family: "Koulen", "Nunito", sans-serif;
+}

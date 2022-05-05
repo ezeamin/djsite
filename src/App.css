@@ -1,0 +1,32 @@
+.App {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(5%, #2f6ed3),
+    color-stop(20%, #5095e4),
+    color-stop(60%, #5095e4),
+    color-stop(95%, #2f6ed3)
+  );
+  background-image: -moz-linear-gradient(
+    top,
+    #2f6ed3 5%,
+    #5095e4 20%,
+    #5095e4 60%,
+    #2f6ed3 95%
+  );
+  background-image: linear-gradient(
+    180deg,
+    #5a98fd 5%,
+    #7fade2 20%,
+    #7fade2 60%,
+    #5a98fd 95%
+  );
+
+  height: 100vh;
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-x: hidden;
+}
