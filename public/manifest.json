@@ -1,6 +1,6 @@
 {
   "short_name": "Dj Eze Amin",
-  "name": "Presupuestá tu fiesta",
+  "name": "Dj Eze Amin",
   "icons": [
     {
       "src": "/img/favicon.png",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#2f2f2f",
+  "background_color": "#2f2f2f"
 }

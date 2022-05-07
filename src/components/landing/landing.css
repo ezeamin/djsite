@@ -1,10 +1,12 @@
 .landing__dot{
     position: absolute;
     z-index: 0;
+    /* filter: grayscale(); */
 }
 
 #landing__dot-1{
     top: 0;
+    left: -20px;
 }
 
 #landing__dot-2{
@@ -28,8 +30,8 @@
     border-radius: 15px;
     
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 10px );
-    -webkit-backdrop-filter: blur( 10px );
+    backdrop-filter: blur( 6px );
+    -webkit-backdrop-filter: blur( 6px );
     position: relative;
     z-index: 100;
 }
@@ -49,9 +51,13 @@
 .landing__container__button{
     width: 100%;
     border: none;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.137);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.055);
     border-radius: 15px;
     height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
 }
 
 .landing__container__button a{
@@ -65,13 +71,20 @@
 }
 
 #landing__container__button-presupuestar{
-    background-color: rgb(255, 103, 103);
+    background-color: var(--color-secondary);
 }
 
 #landing__container__button-fechas{
-    background-color: rgb(111, 108, 238);
+    background-color: var(--color-divided);
 }
 
 #landing__container__button-contacto{
-    background-color: rgb(70, 206, 52);
+    background-color: var(--color-tertiary);
+}
+
+.copyright{
+    position: absolute;
+    bottom: -10px;
+    right: 10px;
+    color: rgb(153, 153, 153);
 }
