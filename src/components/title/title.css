@@ -1,0 +1,10 @@
+.title{
+    font-size: 2.5rem;
+}
+
+.title__hr{
+    color: aliceblue;
+    height: 10px;
+    margin: 0;
+    margin-bottom: 1rem;
+}

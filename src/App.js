@@ -1,10 +1,20 @@
-import './App.css';
-import Landing from './components/landing/Landing';
+import "./App.css";
+import Landing from "./components/landing/Landing";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Bg from "./components/bg/Bg";
+import PanelPresupuestar from "./components/presupuestar/PanelPresupuestar";
 
 function App() {
   return (
     <div className="App">
-      <Landing />
+      <Bg>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/presupuestar" element={<PanelPresupuestar />} />
+          </Routes>
+        </Router>
+      </Bg>
     </div>
   );
 }

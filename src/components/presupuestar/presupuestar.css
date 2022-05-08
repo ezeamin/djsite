@@ -1,0 +1,18 @@
+.presupuestar__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.presupuestar__price{
+    background: linear-gradient(
+    45deg,
+    var(--color-red-dark) 0%,
+    var(--color-red-light) 100%
+  );
+  box-shadow: var(--box-shadow);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    color: aliceblue;
+    font-weight: 600;
+}
