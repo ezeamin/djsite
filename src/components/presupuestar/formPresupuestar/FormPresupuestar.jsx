@@ -156,14 +156,14 @@ const FormPresupuestar = (props) => {
     }
   };
 
-  // const { ref: maps } = usePlacesWidget({
-  //   apiKey: "AIzaSyAvZD2kMDCEIKgRsf7BiODkCai8ZZRlAFU",
-  //   onPlaceSelected: (place) => console.log(place),
-  //   options: {
-  //     componentRestrictions: { country: "ar" },
-  //     libraries: ["places"],
-  //   },
-  // });
+  const { ref: maps } = usePlacesWidget({
+    apiKey: "AIzaSyAvZD2kMDCEIKgRsf7BiODkCai8ZZRlAFU",
+    onPlaceSelected: (place) => console.log(place),
+    options: {
+      componentRestrictions: { country: "ar" },
+      libraries: ["places","geocode","maps"],
+    },
+  });
 
   const handleUbicacion = (e) => {
     setUbicacion(e.target.value);
@@ -210,7 +210,7 @@ const FormPresupuestar = (props) => {
           type="text"
           value={ubicacion}
           onChange={handleUbicacion}
-          // ref={maps}
+          ref={maps}
           className="form__input"
           placeholder="Av. Aconquija 100, Yerba Buena"
         />
