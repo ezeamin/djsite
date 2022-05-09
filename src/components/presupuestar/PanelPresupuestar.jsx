@@ -9,14 +9,16 @@ const PanelPresupuestar = () => {
   const [estMay, setEstMay] = React.useState(false);
   const [estMen, setEstMen] = React.useState(false);
 
+  const [price, setPrice] = React.useState("0");
+
   return (
     <div className="container">
       <div className="presupuestar__header">
         <BackButton className="my-2" />
-        <Price price="0" estMay={estMay} estMen={estMen}/>
+        <Price price={price} estMay={estMay} estMen={estMen}/>
       </div>
       <Title text="Presupuestar" />
-      <FormPresupuestar setEstMay={setEstMay} setEstMen={setEstMen}/>
+      <FormPresupuestar setEstMay={setEstMay} setEstMen={setEstMen} setPrice={setPrice}/>
     </div>
   );
 };

@@ -36,6 +36,10 @@
   color: rgb(65, 65, 65);
 }
 
+.form__input--error{
+  border: 3px solid var(--color-red-dark);
+}
+
 .form__fechaGroup {
   display: flex;
   justify-content: space-between;
@@ -124,6 +128,7 @@
 .form__autosuggest{
   position: absolute;
   width: 100%;
+  z-index: 150;
 }
 
 .form__autosuggest__inner:first-child{
