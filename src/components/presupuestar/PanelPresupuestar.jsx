@@ -6,14 +6,17 @@ import "./presupuestar.css";
 import Price from "./price/Price";
 
 const PanelPresupuestar = () => {
+  const [estMay, setEstMay] = React.useState(false);
+  const [estMen, setEstMen] = React.useState(false);
+
   return (
     <div className="container">
       <div className="presupuestar__header">
         <BackButton className="my-2" />
-        <Price price="0"/>
+        <Price price="0" estMay={estMay} estMen={estMen}/>
       </div>
       <Title text="Presupuestar" />
-      <FormPresupuestar />
+      <FormPresupuestar setEstMay={setEstMay} setEstMen={setEstMen}/>
     </div>
   );
 };

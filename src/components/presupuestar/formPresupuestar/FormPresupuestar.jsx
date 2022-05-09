@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import { Badge } from "react-bootstrap";
+import { usePlacesWidget } from "react-google-autocomplete";
 
-const FormPresupuestar = () => {
+const FormPresupuestar = (props) => {
   const [fecha, setFecha] = React.useState(undefined);
   const [turno, setTurno] = React.useState(undefined);
   const [ubicacion, setUbicacion] = React.useState(undefined);
@@ -11,6 +12,7 @@ const FormPresupuestar = () => {
 
   const [badgeStatus, setBadgeStatus] = React.useState("success");
   const [badgeText, setBadgeText] = React.useState("disponible!");
+  const [tiempoNoExacto, setTiempoNoExacto] = React.useState(false);
 
   const turnoTarde = useRef();
   const turnoNoche = useRef();
@@ -51,6 +53,9 @@ const FormPresupuestar = () => {
         tiempo5.current.className = "form__button";
         tiempo6.current.className = "form__button";
         tiempoMas.current.className = "form__button";
+        setTiempoNoExacto(true);
+        props.setEstMay(false);
+        props.setEstMen(true);
         break;
       }
       case "4": {
@@ -59,6 +64,9 @@ const FormPresupuestar = () => {
         tiempo5.current.className = "form__button";
         tiempo6.current.className = "form__button";
         tiempoMas.current.className = "form__button";
+        setTiempoNoExacto(false);
+        props.setEstMay(false);
+        props.setEstMen(false);
         break;
       }
       case "5": {
@@ -67,6 +75,9 @@ const FormPresupuestar = () => {
         tiempo5.current.className = "form__button form__button--selected";
         tiempo6.current.className = "form__button";
         tiempoMas.current.className = "form__button";
+        setTiempoNoExacto(false);
+        props.setEstMay(false);
+        props.setEstMen(false);
         break;
       }
       case "6": {
@@ -75,6 +86,9 @@ const FormPresupuestar = () => {
         tiempo5.current.className = "form__button";
         tiempo6.current.className = "form__button form__button--selected";
         tiempoMas.current.className = "form__button";
+        setTiempoNoExacto(false);
+        props.setEstMay(false);
+        props.setEstMen(false);
         break;
       }
       case "Mas": {
@@ -83,6 +97,9 @@ const FormPresupuestar = () => {
         tiempo5.current.className = "form__button";
         tiempo6.current.className = "form__button";
         tiempoMas.current.className = "form__button form__button--selected";
+        setTiempoNoExacto(true);
+        props.setEstMay(true);
+        props.setEstMen(false);
         break;
       }
       default: {
@@ -139,12 +156,25 @@ const FormPresupuestar = () => {
     }
   };
 
+  // const { ref: maps } = usePlacesWidget({
+  //   apiKey: "AIzaSyAvZD2kMDCEIKgRsf7BiODkCai8ZZRlAFU",
+  //   onPlaceSelected: (place) => console.log(place),
+  //   options: {
+  //     componentRestrictions: { country: "ar" },
+  //     libraries: ["places"],
+  //   },
+  // });
+
+  const handleUbicacion = (e) => {
+    setUbicacion(e.target.value);
+  };
+
   return (
-    <form>
+    <form onSubmit={(e) => e.preventDefault()}>
       <div className="form-group">
         <div className="form__fechaGroup mb-1">
           <p className="form__label m-0">Fecha</p>{" "}
-          {fecha && (
+          {fecha && turno && (
             <Badge bg={badgeStatus} className="mt-1 mb-0 form__fecha__badge">
               Fecha {badgeText}
             </Badge>
@@ -179,13 +209,22 @@ const FormPresupuestar = () => {
         <input
           type="text"
           value={ubicacion}
-          onChange={(e) => setUbicacion(e.target.value)}
+          onChange={handleUbicacion}
+          // ref={maps}
           className="form__input"
           placeholder="Av. Aconquija 100, Yerba Buena"
         />
       </div>
       <div className="form-group mt-2">
-        <p className="form__label">Tiempo (horas)</p>
+        <div className="form__fechaGroup mb-1">
+          <p className="form__label m-0">Tiempo (horas)</p>
+          {tiempoNoExacto && (
+            <Badge bg="warning" className="mt-1 mb-0 form__fecha__badge">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              &nbsp;Valor estimado
+            </Badge>
+          )}
+        </div>
         <div className="form__buttons">
           <input
             ref={tiempoMenos}
@@ -263,7 +302,9 @@ const FormPresupuestar = () => {
         </div>
       </div>
       <div className="form-group mt-2 d-flex justify-content-between align-items-center">
-        <p className="form__label">Humo <span className="fw-normal">(+$100)</span></p>
+        <p className="form__label">
+          Humo <span className="fw-normal">(+$100)</span>
+        </p>
         <div className="position-relative">
           <input
             type="checkbox"

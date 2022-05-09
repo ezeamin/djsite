@@ -1,121 +1,121 @@
-.presupuestar__header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.presupuestar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.presupuestar__price{
-    background: linear-gradient(
-    45deg,
+.presupuestar__price {
+  background: linear-gradient(
+    0deg,
     var(--color-red-dark) 0%,
     var(--color-red-light) 100%
   );
   box-shadow: var(--box-shadow);
-    padding: 0.5rem 1rem;
-    border-radius: 15px;
-    color: aliceblue;
-    font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  color: aliceblue;
+  font-weight: 600;
 }
 
-.form__label{
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: aliceblue;
-    margin-bottom: 0.25rem;
+.form__label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: aliceblue;
+  margin-bottom: 0.25rem;
 }
 
-.form__input{
-    padding: 0.5rem 0.75rem;
-    width: 100%;
-    border: #ccc;
-    border-radius: 15px;
-    box-shadow: var(--box-shadow);
-    outline: none;
-    background: linear-gradient(45deg,rgb(204, 204, 204) 0%,#fff 100%);
-    margin-right: 0.25rem;
+.form__input {
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+  border: #ccc;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  outline: none;
+  background: linear-gradient(0deg, rgb(204, 204, 204) 0%, #fff 100%);
+  margin-right: 0.25rem;
 }
 
-.form__fechaGroup{
-    display: flex;
-    justify-content: space-between;
+.form__fechaGroup {
+  display: flex;
+  justify-content: space-between;
 }
 
-.form__fecha__badge{
-    line-height: normal !important;
-} 
-
-.form__buttons{
-    display: flex;
-    justify-content: space-between;
+.form__fecha__badge {
+  line-height: normal !important;
 }
 
-.form__button{
-    box-shadow: var(--box-shadow);
-    border: none;
-    border-radius: 15px;
-    padding: 0.5rem 1.2rem;
-    outline: none;
-    background: linear-gradient(45deg,rgb(204, 204, 204) 0%,#fff 100%);
-    margin-right: 0.25rem;
-    font-family: "Koulen", "Nunito";
-    font-size: 1.15rem;
-    color: rgb(80, 80, 80);
-    line-height: normal;
-    transition: all 0.25s;
+.form__buttons {
+  display: flex;
+  justify-content: space-between;
 }
 
-.form__button:last-child{
-    margin-right: 0;
+.form__button {
+  box-shadow: var(--box-shadow);
+  border: none;
+  border-radius: 15px;
+  padding: 0.5rem 1.2rem;
+  outline: none;
+  background: linear-gradient(0deg, rgb(204, 204, 204) 0%, #fff 100%);
+  margin-right: 0.25rem;
+  font-family: "Koulen", "Nunito";
+  font-size: 1.15rem;
+  color: rgb(80, 80, 80);
+  line-height: normal;
+  transition: all 0.25s;
 }
 
-.form__button--selected{
-    background: linear-gradient(
-    45deg,
+.form__button:last-child {
+  margin-right: 0;
+}
+
+.form__button--selected {
+  background: linear-gradient(
+    0deg,
     var(--color-blue-dark) 0%,
     var(--color-blue-light) 100%
   );
   color: aliceblue;
 }
 
-.form__button__servicio{
-    padding: 0.5rem 1.5rem;
+.form__button__servicio {
+  padding: 0.5rem 1.5rem;
 }
 
-.form__servicio__description{
-    color: aliceblue;
-    margin-top: 0.5rem;
+.form__servicio__description {
+  color: aliceblue;
+  margin-top: 0.5rem;
 }
 
-.form__servicio__description p{
-    margin: 0;
+.form__servicio__description p {
+  margin: 0;
 }
 
-.form__checkbox{
-    border-radius: 30%;
-    border: none;
-    width: 16px;
-    height: 16px;
-    border: 1px solid #ddd;
-    appearance: none;
-    transition: all 0.25s;
+.form__checkbox {
+  border-radius: 30%;
+  border: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ddd;
+  appearance: none;
+  transition: all 0.25s;
 }
 
-.form__checkbox:checked{
-    background: linear-gradient(
-    45deg,
+.form__checkbox:checked {
+  background: linear-gradient(
+    0deg,
     var(--color-blue-dark) 0%,
     var(--color-blue-light) 100%
   );
   border: none;
 }
 
-.form__checkbox__tick{
-    position: absolute;
-    left: 3px;
-    margin: auto;
-    top: 4px;
-    font-size: 0.75rem;
-    color: aliceblue;
-    opacity: 0;
-    transition: all 0.25s;
+.form__checkbox__tick {
+  position: absolute;
+  left: 3px;
+  margin: auto;
+  top: 4px;
+  font-size: 0.75rem;
+  color: aliceblue;
+  opacity: 0;
+  transition: all 0.25s;
 }

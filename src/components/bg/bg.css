@@ -1,5 +1,5 @@
 .bg__dot{
-    position: absolute;
+    position: fixed;
     z-index: 0;
     /* filter: grayscale(); */
 }

@@ -9,7 +9,7 @@ const Landing = () => {
       <div className="pt-5 text-center">
         <img
           className="landing__logo"
-          src="/img/logo.png"
+          src="/img/logo.webp"
           alt="logo Dj Eze Amin"
         />
       </div>
@@ -25,7 +25,7 @@ const Landing = () => {
           icon="fa-dollar-sign"
           type="presupuestar"
           internal
-          // disabled
+          disabled
         />
         <MainButton
           text="Fechas disponibles"
@@ -33,7 +33,7 @@ const Landing = () => {
           icon="fa-calendar-days"
           type="fechas"
           internal
-          // disabled
+          disabled
         />
         <MainButton
           text="Enganchados"
