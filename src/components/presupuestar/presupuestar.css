@@ -33,6 +33,7 @@
   outline: none;
   background: linear-gradient(0deg, rgb(204, 204, 204) 0%, #fff 100%);
   margin-right: 0.25rem;
+  color: rgb(65, 65, 65);
 }
 
 .form__fechaGroup {
@@ -118,4 +119,17 @@
   color: aliceblue;
   opacity: 0;
   transition: all 0.25s;
+}
+
+.form__autosuggest{
+  position: absolute;
+  width: 100%;
+}
+
+.form__autosuggest__inner:first-child{
+  border-radius: 15px 15px 0 0;
+}
+
+.form__autosuggest__inner:last-child{
+  border-radius: 0 0 15px 15px;
 }

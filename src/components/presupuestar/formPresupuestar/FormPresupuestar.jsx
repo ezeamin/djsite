@@ -1,14 +1,21 @@
 import React, { useRef } from "react";
 import { Badge } from "react-bootstrap";
-import { usePlacesWidget } from "react-google-autocomplete";
+// import { usePlacesWidget } from "react-google-autocomplete";
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from "react-places-autocomplete";
+import Ubicacion from "./Ubicacion";
 
 const FormPresupuestar = (props) => {
   const [fecha, setFecha] = React.useState(undefined);
   const [turno, setTurno] = React.useState(undefined);
-  const [ubicacion, setUbicacion] = React.useState(undefined);
+  const [ubicacion, setUbicacion] = React.useState("");
   const [tiempo, setTiempo] = React.useState(undefined);
   const [servicio, setServicio] = React.useState(undefined);
   const [humo, setHumo] = React.useState(false);
+
+  const [coordenadas, setCoordenadas] = React.useState(null);
 
   const [badgeStatus, setBadgeStatus] = React.useState("success");
   const [badgeText, setBadgeText] = React.useState("disponible!");
@@ -156,19 +163,6 @@ const FormPresupuestar = (props) => {
     }
   };
 
-  const { ref: maps } = usePlacesWidget({
-    apiKey: "AIzaSyAvZD2kMDCEIKgRsf7BiODkCai8ZZRlAFU",
-    onPlaceSelected: (place) => console.log(place),
-    options: {
-      componentRestrictions: { country: "ar" },
-      libraries: ["places","geocode","maps"],
-    },
-  });
-
-  const handleUbicacion = (e) => {
-    setUbicacion(e.target.value);
-  };
-
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <div className="form-group">
@@ -206,14 +200,7 @@ const FormPresupuestar = (props) => {
       </div>
       <div className="form-group mt-2">
         <p className="form__label">Ubicación</p>
-        <input
-          type="text"
-          value={ubicacion}
-          onChange={handleUbicacion}
-          ref={maps}
-          className="form__input"
-          placeholder="Av. Aconquija 100, Yerba Buena"
-        />
+        <Ubicacion ubicacion={ubicacion} handleUbicacion={e => setUbicacion(e)} setCoordenadas={setCoordenadas}/>
       </div>
       <div className="form-group mt-2">
         <div className="form__fechaGroup mb-1">
