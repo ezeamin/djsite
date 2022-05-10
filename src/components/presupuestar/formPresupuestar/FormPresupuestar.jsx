@@ -67,7 +67,7 @@ const FormPresupuestar = (props) => {
         confirmButtonColor: "#77dd77",
         cancelButtonColor: "#8d8d8d",
         confirmButtonText: "Contactar",
-        footer: `<p className="mb-0">Recomiento leer los <a href="https://bit.ly/presupuestoDJ">terminos y condiciones</a></p>`,
+        footer: `<p className="mb-0">Recomiento leer los <a href="https://bit.ly/pre300622">terminos y condiciones</a></p>`,
       }).then((result) => {
         if (result.isConfirmed) {
           const text = `Hola Ezequiel, quiero presupuestar la siguiente fiesta:%0A
