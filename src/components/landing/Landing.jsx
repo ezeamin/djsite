@@ -1,5 +1,4 @@
 import React from "react";
-import Bg from "../bg/Bg";
 import "./landing.css";
 import MainButton from "./mainButton/MainButton";
 
@@ -15,7 +14,7 @@ const Landing = () => {
       </div>
       <h1 className="main__title landing__name">Dj Eze Amin</h1>
       <div className="text-center text-light">
-        <p className="mb-0">Bienvenido a mi pagina 😀</p>
+        <p className="mb-0">Bienvenido ❤️</p>
         <p className="mb-0">Seleccioná qué hacer a continuación</p>
       </div>
       <div className="container mt-2 landing__buttons">
@@ -25,7 +24,6 @@ const Landing = () => {
           icon="fa-dollar-sign"
           type="presupuestar"
           internal
-          disabled
         />
         <MainButton
           text="Fechas disponibles"

@@ -7,14 +7,9 @@ import PlacesAutocomplete, {
 
 const Ubicacion = (props) => {
   const ubicacionRef = React.useRef();
-  const [ubicacionError, setUbicacionError] = React.useState(false);
 
   const handleSelect = async (value) => {
-    const results = await geocodeByAddress(value);
-    const latLng = await getLatLng(results[0]);
-
-    props.handleUbicacion(value);
-    props.setCoordenadas(latLng);
+    props.setUbicacion(value);
   };
 
   const handleBlur = async (e) => {
@@ -22,11 +17,10 @@ const Ubicacion = (props) => {
       await geocodeByAddress(e.target.value);
 
       ubicacionRef.current.classList = "form__input";
-      setUbicacionError(false);
-      props.setPrice("0"); //sacar
+      props.setUbicacionError(false);
     } catch (e) {
       ubicacionRef.current.classList = "form__input form__input--error";
-      setUbicacionError(true);
+      props.setUbicacionError(true);
       props.setPrice(null);
     }
   };
@@ -36,8 +30,8 @@ const Ubicacion = (props) => {
       <p className="form__label">Ubicación (exacta)</p>
       <PlacesAutocomplete
         value={props.ubicacion}
-        onChange={props.handleUbicacion}
-        onSelect={handleSelect}
+        onChange={value => props.setUbicacion(value)}
+        onSelect={value => props.setUbicacion(value)}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps }) => (
           <div className="position-relative">
@@ -74,7 +68,7 @@ const Ubicacion = (props) => {
           </div>
         )}
       </PlacesAutocomplete>
-      {ubicacionError && (
+      {props.ubicacionError && (
         <Badge bg="danger" className="mt-1 mb-0 form__fecha__badge">
           Dirección no valida
         </Badge>

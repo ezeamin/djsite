@@ -9,7 +9,7 @@ const MainButton = (props) => {
     props.icon +
     (props.brands ? " fa-brands text-light" : " fa-solid text-light");
   const buttonClassName =
-    "mt-2 landing__button" +
+    "mt-3 landing__button" +
     (props.disabled ? " landing__button--disabled" : "");
 
   const navigate = useNavigate();

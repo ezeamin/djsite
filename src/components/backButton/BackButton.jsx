@@ -6,7 +6,7 @@ const BackButton = (props) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(-1);
+        navigate("/");
     }
 
     const className = props.className ? props.className + ' backButton' : 'backButton';

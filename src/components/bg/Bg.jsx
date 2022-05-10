@@ -3,7 +3,7 @@ import "./bg.css";
 
 const Bg = (props) => {
   return (
-    <div className="container position-relative">
+    <div className="container position-relative screenBg">
       <div className="bg__container">{props.children}</div>
       <img
         id="bg__dot-1"
@@ -17,12 +17,12 @@ const Bg = (props) => {
         src="https://hype4.academy/_next/static/media/ovalShadow.793e2be7.svg"
         alt="dots for background effect"
       />
-      {/* <img
+      <img
         id="bg__dot-3"
         className="bg__dot"
         src="https://hype4.academy/_next/static/media/ovalShadow.793e2be7.svg"
         alt="dots for background effect"
-      /> */}
+      />
     </div>
   );
 };

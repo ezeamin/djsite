@@ -2,8 +2,10 @@ import React, { useRef } from "react";
 import { Badge } from "react-bootstrap";
 
 const Fecha = (props) => {
-  const [badgeStatus, setBadgeStatus] = React.useState("success");
-  const [badgeText, setBadgeText] = React.useState("disponible!");
+  // const [badgeStatus, setBadgeStatus] = React.useState("success");
+  // const [badgeText, setBadgeText] = React.useState("disponible!");
+  const [badgeStatus, setBadgeStatus] = React.useState("");
+  const [badgeText, setBadgeText] = React.useState("");
 
   const fechaInput = useRef();
   const turnoTarde = useRef();
@@ -14,12 +16,12 @@ const Fecha = (props) => {
 
     if (e.target.value === "Tarde") {
       turnoTarde.current.classList =
-        "form__button w-100 form__button--selected";
-      turnoNoche.current.classList = "form__button w-100";
+        "form__button form__button--selected";
+      turnoNoche.current.classList = "form__button";
     } else {
-      turnoTarde.current.classList = "form__button w-100";
+      turnoTarde.current.classList = "form__button";
       turnoNoche.current.classList =
-        "form__button w-100 form__button--selected";
+        "form__button form__button--selected";
     }
   };
 
@@ -30,7 +32,6 @@ const Fecha = (props) => {
       fechaInput.current.classList = "form__input form__input--error";
       setBadgeStatus("danger");
       setBadgeText("no valida");
-      props.setPrice(null);
     } else {
       //check if date is in the past
       const date = new Date(fecha);
@@ -40,12 +41,10 @@ const Fecha = (props) => {
         fechaInput.current.classList = "form__input form__input--error";
         setBadgeStatus("danger");
         setBadgeText("no valida");
-        props.setPrice(null);
       } else {
         fechaInput.current.classList = "form__input";
-        setBadgeStatus("success");
-        setBadgeText("disponible");
-        // props.setPrice("0");
+        // setBadgeStatus("success");
+        // setBadgeText("disponible");
       }
     }
   };
@@ -54,8 +53,8 @@ const Fecha = (props) => {
     <div className="form-group">
       <div className="form__fechaGroup mb-1">
         <p className="form__label m-0">Fecha</p>{" "}
-        {((props.fecha && props.turno) ||
-          (props.fecha && badgeStatus === "danger")) && (
+        {(/*(props.fecha && props.turno) ||*/
+          (badgeStatus === "danger")) && (
           <Badge bg={badgeStatus} className="mt-1 mb-0 form__fecha__badge">
             Fecha {badgeText}
           </Badge>
@@ -67,20 +66,20 @@ const Fecha = (props) => {
         onChange={(e) => props.setFecha(e.target.value)}
         onBlur={handleFechaBlur}
         ref={fechaInput}
-        className="form__input"
+        className="form__input form__input__fecha"
         placeholder="dd/mm/aaaa"
       />
       <div className="form__buttons mt-2">
         <input
           ref={turnoTarde}
-          className="form__button w-100"
+          className="form__button"
           type="button"
           value="Tarde"
           onClick={handleTurno}
         />
         <input
           ref={turnoNoche}
-          className="form__button w-100"
+          className="form__button"
           type="button"
           value="Noche"
           onClick={handleTurno}

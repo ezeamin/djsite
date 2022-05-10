@@ -11,29 +11,29 @@ const Servicio = (props) => {
     switch (e.target.value) {
       case "Basico": {
         servicioBasico.current.className =
-          "form__button form__button__servicio form__button--selected";
+          "form__button form__button--selected";
         servicioSonido.current.className =
-          "form__button form__button__servicio";
+          "form__button";
         servicioCompleto.current.className =
-          "form__button form__button__servicio";
+          "form__button";
         break;
       }
       case "Sonido": {
         servicioBasico.current.className =
-          "form__button form__button__servicio";
+          "form__button";
         servicioSonido.current.className =
-          "form__button form__button__servicio form__button--selected";
+          "form__button form__button--selected";
         servicioCompleto.current.className =
-          "form__button form__button__servicio";
+          "form__button";
         break;
       }
       case "Completo": {
         servicioBasico.current.className =
-          "form__button form__button__servicio";
+          "form__button";
         servicioSonido.current.className =
-          "form__button form__button__servicio";
+          "form__button";
         servicioCompleto.current.className =
-          "form__button form__button__servicio form__button--selected";
+          "form__button form__button--selected";
         break;
       }
       default: {
@@ -48,21 +48,21 @@ const Servicio = (props) => {
       <div className="form__buttons">
         <input
           ref={servicioBasico}
-          className="form__button form__button__servicio"
+          className="form__button"
           type="button"
           value="Basico"
           onClick={handleServicio}
         />
         <input
           ref={servicioSonido}
-          className="form__button form__button__servicio"
+          className="form__button"
           type="button"
           value="Sonido"
           onClick={handleServicio}
         />
         <input
           ref={servicioCompleto}
-          className="form__button form__button__servicio"
+          className="form__button"
           type="button"
           value="Completo"
           onClick={handleServicio}
