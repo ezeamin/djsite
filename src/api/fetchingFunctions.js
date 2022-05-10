@@ -11,6 +11,10 @@ export const fetchPrice = async (locData, tiempo, servicio, humo) => {
 
     return res.data;
   } catch (err) {
-    return err.response.data.message;
+    try {
+      return err.response.data.message;
+    } catch (err) {
+      return "Error al conectar con el servidor";
+    }
   }
 };
