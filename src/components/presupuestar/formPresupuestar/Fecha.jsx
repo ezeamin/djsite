@@ -43,7 +43,7 @@ const Fecha = (props) => {
         setBadgeText("no valida");
       } else {
         fechaInput.current.classList = "form__input";
-        // setBadgeStatus("success");
+        setBadgeStatus("success");
         // setBadgeText("disponible");
       }
     }

@@ -76,7 +76,7 @@ const Tiempo = (props) => {
   };
 
   return (
-    <div className="form-group mt-2">
+    <div className="form-group mt-3">
       <div className="form__fechaGroup mb-1">
         <p className="form__label m-0">Tiempo (horas)</p>
         {tiempoNoExacto && (

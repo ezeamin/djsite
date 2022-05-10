@@ -2,15 +2,10 @@ import React from "react";
 import { Badge } from "react-bootstrap";
 import PlacesAutocomplete, {
   geocodeByAddress,
-  getLatLng,
 } from "react-places-autocomplete";
 
 const Ubicacion = (props) => {
   const ubicacionRef = React.useRef();
-
-  const handleSelect = async (value) => {
-    props.setUbicacion(value);
-  };
 
   const handleBlur = async (e) => {
     try {
@@ -26,7 +21,7 @@ const Ubicacion = (props) => {
   };
 
   return (
-    <div className="form-group mt-2">
+    <div className="form-group mt-3">
       <p className="form__label">Ubicación (exacta)</p>
       <PlacesAutocomplete
         value={props.ubicacion}

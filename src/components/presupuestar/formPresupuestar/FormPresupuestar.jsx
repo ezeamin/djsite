@@ -51,7 +51,7 @@ const FormPresupuestar = (props) => {
     // fetching
     setLoading(true);
 
-    const newPrice = await fetchPrice(ubicacion, tiempo, servicio, humo);
+    const newPrice = await fetchPrice(fecha,turno,ubicacion, tiempo, servicio, humo);
 
     setLoading(false);
 
@@ -62,7 +62,25 @@ const FormPresupuestar = (props) => {
       Swal.fire({
         title: title,
         text: "Este valor es solo estimativo y no necesariamente final. Por favor, contactar con Ezequiel para confirmar y continuar el proceso",
-        confirmButtonText: "Ok",
+        cancelButtonText: "Cerrar",
+        showCancelButton: true,
+        confirmButtonColor: "#77dd77",
+        cancelButtonColor: "#8d8d8d",
+        confirmButtonText: "Contactar",
+        footer: `<p className="mb-0">Recomiento leer los <a href="https://bit.ly/presupuestoDJ">terminos y condiciones</a></p>`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const text = `Hola Ezequiel, quiero presupuestar la siguiente fiesta:%0A
+          Fecha: ${fecha}%0A
+          Turno: ${turno}%0A
+          Ubicación: ${ubicacion}%0A
+          Tiempo: ${tiempo}%0A
+          Servicio: ${servicio}%0A
+          Humo: ${humo}%0A%0A
+          El presupuesto es de: ${title}`;
+          window.location.href = `https://wa.me/+5493815038570?text=${encodeURI(text)}`;
+          // window.location.href = `https://wa.me/+5493815038570?text=Hola%20Ezequiel,%20quiero%20presupuestar%20la%20siguiente%20fiesta:%0AFecha:%20${fecha}%0ATurno:%20${turno}%0AUbicación:%20${ubicacion}%0ATiempo:%20${tiempo}%0AServicio:%20${servicio}%0AHumo:%20${humo}%0A%0AEl%20presupuesto%20es%20de:%20${title}`
+        }
       });
     } else {
       Swal.fire({

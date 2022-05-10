@@ -43,7 +43,7 @@ const Servicio = (props) => {
   };
 
   return (
-    <div className="form-group mt-2">
+    <div className="form-group mt-3">
       <p className="form__label">Servicio</p>
       <div className="form__buttons">
         <input
