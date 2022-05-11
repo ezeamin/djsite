@@ -20,7 +20,6 @@ const FormPresupuestar = (props) => {
   const [loading, setLoading] = React.useState(false);
   const [ubicacionError, setUbicacionError] = React.useState(false);
   const [prev, setPrev] = React.useState(null);
-  const [distancia, setDistancia] = React.useState(0);
 
   //  Fetching backend data
 
@@ -53,7 +52,7 @@ const FormPresupuestar = (props) => {
     // fetching
     setLoading(true);
 
-    let newPrice;
+    let newPrice,distancia;
 
     if (
       prev &&
@@ -65,6 +64,7 @@ const FormPresupuestar = (props) => {
       prev.humo === humo
     ) {
       newPrice = Number.parseInt(prev.price);
+      distancia = Number.parseFloat(prev.distancia)
     } else {
       // no hay datos
       const res = await fetchPrice(
@@ -76,12 +76,12 @@ const FormPresupuestar = (props) => {
         humo
       );
 
-      if(res.value && typeof res.value === "number"){
+      if(res.value){
         newPrice = res.value;
-        setDistancia(res.ubicacion);
+        distancia = res.ubicacion;
       } else {
         newPrice = res;
-        setDistancia(0);
+        distancia = 0;
       }
 
       if (typeof newPrice === "number") {
@@ -93,6 +93,7 @@ const FormPresupuestar = (props) => {
           servicio,
           humo,
           price: newPrice,
+          distancia: res.ubicacion
         });
       }
     }
@@ -101,7 +102,8 @@ const FormPresupuestar = (props) => {
 
     if (typeof newPrice === "number") {
       props.setPrice(newPrice);
-      const title = `$ ${newPrice}`;
+      const signo = tiempo === "Menos" ? "<" : tiempo==="Mas" ? ">" : "";
+      const title = `${signo} $ ${newPrice}`;
 
       Swal.fire({
         title: title,
