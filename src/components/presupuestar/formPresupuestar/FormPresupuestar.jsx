@@ -20,6 +20,7 @@ const FormPresupuestar = (props) => {
   const [loading, setLoading] = React.useState(false);
   const [ubicacionError, setUbicacionError] = React.useState(false);
   const [prev, setPrev] = React.useState(null);
+  const [distancia, setDistancia] = React.useState(0);
 
   //  Fetching backend data
 
@@ -66,7 +67,7 @@ const FormPresupuestar = (props) => {
       newPrice = Number.parseInt(prev.price);
     } else {
       // no hay datos
-      newPrice = await fetchPrice(
+      const res = await fetchPrice(
         fecha,
         turno,
         ubicacion,
@@ -74,6 +75,14 @@ const FormPresupuestar = (props) => {
         servicio,
         humo
       );
+
+      if(res.value && typeof res.value === "number"){
+        newPrice = res.value;
+        setDistancia(res.distancia);
+      } else {
+        newPrice = res;
+        setDistancia(0);
+      }
 
       if (typeof newPrice === "number") {
         setPrev({
@@ -126,7 +135,7 @@ const FormPresupuestar = (props) => {
           const text = `Hola Ezequiel, soy ${name} y quiero presupuestar la siguiente fiesta:
           Fecha: ${fecha}
           Turno: ${turno}
-          Ubicación: ${ubicacion}
+          Ubicación: ${ubicacion} (${distancia}km)
           Tiempo: ${tiempo} horas
           Servicio: ${servicio}
           Humo: ${humo ? "Si" : "No"}
