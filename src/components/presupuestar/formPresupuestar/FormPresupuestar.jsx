@@ -19,6 +19,7 @@ const FormPresupuestar = (props) => {
 
   const [loading, setLoading] = React.useState(false);
   const [ubicacionError, setUbicacionError] = React.useState(false);
+  const [prev, setPrev] = React.useState(null);
 
   //  Fetching backend data
 
@@ -51,14 +52,39 @@ const FormPresupuestar = (props) => {
     // fetching
     setLoading(true);
 
-    const newPrice = await fetchPrice(
-      fecha,
-      turno,
-      ubicacion,
-      tiempo,
-      servicio,
-      humo
-    );
+    let newPrice;
+
+    if (!prev) { // no hay datos
+      newPrice = await fetchPrice(
+        fecha,
+        turno,
+        ubicacion,
+        tiempo,
+        servicio,
+        humo
+      );
+
+      setPrev({
+        fecha,
+        turno,
+        ubicacion,
+        tiempo,
+        servicio,
+        humo,
+        price: newPrice,
+      });
+    } else { // ya se cargó
+      if (
+        prev.fecha === fecha &&
+        prev.turno === turno &&
+        prev.ubicacion === ubicacion &&
+        prev.tiempo === tiempo &&
+        prev.servicio === servicio &&
+        prev.humo === humo
+      ) { // no hay cambios
+        newPrice = prev.price;
+      }
+    }
 
     setLoading(false);
 
@@ -69,27 +95,26 @@ const FormPresupuestar = (props) => {
       Swal.fire({
         title: title,
         text: "Este valor es solo estimativo y no necesariamente final. Por favor, contactar con Ezequiel para confirmar y continuar el proceso",
-        backdrop: false,
         cancelButtonText: "Cerrar",
         showCancelButton: true,
         confirmButtonColor: "#77dd77",
         cancelButtonColor: "#8d8d8d",
         confirmButtonText: "Contactar",
-        footer: `<p className="mb-0">Recomiento leer los <a href="https://bit.ly/pre300622" className="mb-0 form__swal__link">terminos y condiciones</a></p>`,
+        footer: `Recomiento leer los <a href="https://bit.ly/pre300622" className="mb-0 form__swal__link">terminos y condiciones</a>`,
       }).then((result) => {
         if (result.isConfirmed) {
-          const text = `Hola Ezequiel, quiero presupuestar la siguiente fiesta:%0A
-          Fecha: ${fecha}%0A
-          Turno: ${turno}%0A
-          Ubicación: ${ubicacion}%0A
-          Tiempo: ${tiempo}%0A
-          Servicio: ${servicio}%0A
-          Humo: ${humo}%0A%0A
+          const text = `Hola Ezequiel, quiero presupuestar la siguiente fiesta:
+          Fecha: ${fecha}
+          Turno: ${turno}
+          Ubicación: ${ubicacion}
+          Tiempo: ${tiempo} horas
+          Servicio: ${servicio}
+          Humo: ${humo ? "Si" : "No"}
+
           El presupuesto es de: ${title}`;
           window.location.href = `https://wa.me/+5493815038570?text=${encodeURI(
             text
           )}`;
-          // window.location.href = `https://wa.me/+5493815038570?text=Hola%20Ezequiel,%20quiero%20presupuestar%20la%20siguiente%20fiesta:%0AFecha:%20${fecha}%0ATurno:%20${turno}%0AUbicación:%20${ubicacion}%0ATiempo:%20${tiempo}%0AServicio:%20${servicio}%0AHumo:%20${humo}%0A%0AEl%20presupuesto%20es%20de:%20${title}`
         }
       });
     } else {
