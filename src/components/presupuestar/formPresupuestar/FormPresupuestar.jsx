@@ -142,7 +142,9 @@ const FormPresupuestar = (props) => {
           Servicio: ${servicio}
           Humo: ${humo ? "Si" : "No"}
 
-          El presupuesto es de: ${title}`;
+          El presupuesto es de: ${title}
+          
+          https://www.google.com/maps/search/?api=1&query=${encodeURI(ubicacion)}`;
 
           const url = `https://wa.me/+5493815038570?text=${encodeURI(text)}`;
           window.open(url, "_blank").focus();
