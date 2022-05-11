@@ -54,7 +54,17 @@ const FormPresupuestar = (props) => {
 
     let newPrice;
 
-    if (!prev) {
+    if (
+      prev &&
+      prev.fecha === fecha &&
+      prev.turno === turno &&
+      prev.ubicacion === ubicacion &&
+      prev.tiempo === tiempo &&
+      prev.servicio === servicio &&
+      prev.humo === humo
+    ) {
+      newPrice = Number.parseInt(prev.price);
+    } else {
       // no hay datos
       newPrice = await fetchPrice(
         fecha,
@@ -74,19 +84,6 @@ const FormPresupuestar = (props) => {
         humo,
         price: newPrice,
       });
-    } else {
-      // ya se cargó
-      if (
-        prev.fecha === fecha &&
-        prev.turno === turno &&
-        prev.ubicacion === ubicacion &&
-        prev.tiempo === tiempo &&
-        prev.servicio === servicio &&
-        prev.humo === humo
-      ) {
-        // no hay cambios
-        newPrice = prev.price;
-      }
     }
 
     setLoading(false);
@@ -111,6 +108,10 @@ const FormPresupuestar = (props) => {
             input: "text",
             inputLabel: "Nombre",
             showCancelButton: true,
+            confirmButtonColor: "#77dd77",
+            cancelButtonColor: "#8d8d8d",
+            confirmButtonText: "Continuar",
+            cancelButtonText: "Cancelar",
             inputValidator: (value) => {
               if (!value) {
                 return "Por favor, escribí tu nombre";
@@ -127,9 +128,9 @@ const FormPresupuestar = (props) => {
           Humo: ${humo ? "Si" : "No"}
 
           El presupuesto es de: ${title}`;
-          window.location.href = `https://wa.me/+5493815038570?text=${encodeURI(
-            text
-          )}`;
+
+          const url = `https://wa.me/+5493815038570?text=${encodeURI(text)}`;
+          window.open(url, "_blank").focus();
         }
       });
     } else {
