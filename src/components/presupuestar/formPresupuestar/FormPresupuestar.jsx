@@ -51,7 +51,14 @@ const FormPresupuestar = (props) => {
     // fetching
     setLoading(true);
 
-    const newPrice = await fetchPrice(fecha,turno,ubicacion, tiempo, servicio, humo);
+    const newPrice = await fetchPrice(
+      fecha,
+      turno,
+      ubicacion,
+      tiempo,
+      servicio,
+      humo
+    );
 
     setLoading(false);
 
@@ -78,7 +85,9 @@ const FormPresupuestar = (props) => {
           Servicio: ${servicio}%0A
           Humo: ${humo}%0A%0A
           El presupuesto es de: ${title}`;
-          window.location.href = `https://wa.me/+5493815038570?text=${encodeURI(text)}`;
+          window.location.href = `https://wa.me/+5493815038570?text=${encodeURI(
+            text
+          )}`;
           // window.location.href = `https://wa.me/+5493815038570?text=Hola%20Ezequiel,%20quiero%20presupuestar%20la%20siguiente%20fiesta:%0AFecha:%20${fecha}%0ATurno:%20${turno}%0AUbicación:%20${ubicacion}%0ATiempo:%20${tiempo}%0AServicio:%20${servicio}%0AHumo:%20${humo}%0A%0AEl%20presupuesto%20es%20de:%20${title}`
         }
       });
