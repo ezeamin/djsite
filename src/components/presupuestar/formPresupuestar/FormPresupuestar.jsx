@@ -134,6 +134,8 @@ const FormPresupuestar = (props) => {
 
           if (!name) return;
 
+          const link = `https://www.google.com/maps/search/?api=1&query=${encodeURI(ubicacion)}`
+
           const text = `Hola Ezequiel, soy ${name} y quiero presupuestar la siguiente fiesta:
           Fecha: ${fecha}
           Turno: ${turno}
@@ -144,16 +146,16 @@ const FormPresupuestar = (props) => {
 
           El presupuesto es de: ${title}
           
-          https://www.google.com/maps/search/?api=1&query=${encodeURI(ubicacion)}`;
+          `;
 
-          const url = `https://wa.me/+5493815038570?text=${encodeURI(text)}`;
+          const url = `https://wa.me/+5493815038570?text=${encodeURI(text)+link}`;
           window.open(url, "_blank").focus();
         }
       });
     } else {
       Swal.fire({
         title: "Error",
-        text: newPrice,
+        text: newPrice ? newPrice : "No se pudo conectar con el servidor. Intentar nuevamente o contactar con Ezequiel",
         icon: "error",
         confirmButtonText: "Ok",
       });
