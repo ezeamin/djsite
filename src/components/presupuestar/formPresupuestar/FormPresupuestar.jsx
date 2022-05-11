@@ -53,7 +53,7 @@ const FormPresupuestar = (props) => {
     // fetching
     setLoading(true);
 
-    let newPrice,distancia;
+    let newPrice;
 
     if (
       prev &&
@@ -124,7 +124,7 @@ const FormPresupuestar = (props) => {
             confirmButtonText: "Continuar",
             cancelButtonText: "Cancelar",
             inputValidator: (value) => {
-              if (!value) {
+              if (!(value.trim())) {
                 return "Por favor, escribí tu nombre";
               }
             },
