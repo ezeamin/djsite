@@ -134,7 +134,9 @@ const FormPresupuestar = (props) => {
 
           if (!name) return;
 
-          const link = `https://www.google.com/maps/search/?api=1&query=${encodeURI(ubicacion)}`
+          let ubic = ubicacion.replaceAll(" ", "%2520");
+
+          const link = `https://www.google.com/maps/search/?api=1%26query=${ubic}`;
 
           const text = `Hola Ezequiel, soy ${name} y quiero presupuestar la siguiente fiesta:
           Fecha: ${fecha}
