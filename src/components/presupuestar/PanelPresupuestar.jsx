@@ -1,4 +1,5 @@
 import React from "react";
+import { ping } from "../../api/fetchingFunctions";
 import BackButton from "../backButton/BackButton";
 import Title from "../title/Title";
 import FormPresupuestar from "./formPresupuestar/FormPresupuestar";
@@ -11,9 +12,13 @@ const PanelPresupuestar = () => {
 
   const [price, setPrice] = React.useState("0");
 
+  React.useEffect(() => {
+    ping();
+  },[]);
+
   return (
     <div className="container">
-      <div className="presupuestar__header">
+      <div className="presupuestar__header mb-2">
         <BackButton className="my-2" />
         <Price price={price} estMay={estMay} estMen={estMen}/>
       </div>

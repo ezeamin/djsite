@@ -75,15 +75,17 @@ const FormPresupuestar = (props) => {
         humo
       );
 
-      setPrev({
-        fecha,
-        turno,
-        ubicacion,
-        tiempo,
-        servicio,
-        humo,
-        price: newPrice,
-      });
+      if (typeof newPrice === "number") {
+        setPrev({
+          fecha,
+          turno,
+          ubicacion,
+          tiempo,
+          servicio,
+          humo,
+          price: newPrice,
+        });
+      }
     }
 
     setLoading(false);
@@ -119,7 +121,7 @@ const FormPresupuestar = (props) => {
             },
           });
 
-          if(!name) return;
+          if (!name) return;
 
           const text = `Hola Ezequiel, soy ${name} y quiero presupuestar la siguiente fiesta:
           Fecha: ${fecha}

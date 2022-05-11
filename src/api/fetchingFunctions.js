@@ -20,3 +20,11 @@ export const fetchPrice = async (fecha, turno, locData, tiempo, servicio, humo) 
     }
   }
 };
+
+export const ping = async () => {
+  try {
+    await axios.get("/");
+  } catch (err) {
+    console.log(err);
+  }
+}
