@@ -54,7 +54,8 @@ const FormPresupuestar = (props) => {
 
     let newPrice;
 
-    if (!prev) { // no hay datos
+    if (!prev) {
+      // no hay datos
       newPrice = await fetchPrice(
         fecha,
         turno,
@@ -73,7 +74,8 @@ const FormPresupuestar = (props) => {
         humo,
         price: newPrice,
       });
-    } else { // ya se cargó
+    } else {
+      // ya se cargó
       if (
         prev.fecha === fecha &&
         prev.turno === turno &&
@@ -81,7 +83,8 @@ const FormPresupuestar = (props) => {
         prev.tiempo === tiempo &&
         prev.servicio === servicio &&
         prev.humo === humo
-      ) { // no hay cambios
+      ) {
+        // no hay cambios
         newPrice = prev.price;
       }
     }
@@ -99,11 +102,23 @@ const FormPresupuestar = (props) => {
         showCancelButton: true,
         confirmButtonColor: "#77dd77",
         cancelButtonColor: "#8d8d8d",
-        confirmButtonText: "Contactar",
-        footer: `Recomiendo leer los &nbsp;<a href="https://bit.ly/tyc-djezeamin-1" className="mb-0 form__swal__link">terminos y condiciones</a>`,
-      }).then((result) => {
+        confirmButtonText: "Contactar por WhatsApp",
+        footer: `Recomiendo leer los&nbsp;<a href="https://bit.ly/tyc-djezeamin-1" target="_blank" class="mb-0 form__swal__link">terminos y condiciones</a>`,
+      }).then(async (result) => {
         if (result.isConfirmed) {
-          const text = `Hola Ezequiel, quiero presupuestar la siguiente fiesta:
+          const { value: name } = await Swal.fire({
+            title: "Ingresá tu nombre",
+            input: "text",
+            inputLabel: "Nombre",
+            showCancelButton: true,
+            inputValidator: (value) => {
+              if (!value) {
+                return "Por favor, escribí tu nombre";
+              }
+            },
+          });
+
+          const text = `Hola Ezequiel, soy ${name} y quiero presupuestar la siguiente fiesta:
           Fecha: ${fecha}
           Turno: ${turno}
           Ubicación: ${ubicacion}
