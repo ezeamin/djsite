@@ -53,7 +53,7 @@ const FormPresupuestar = (props) => {
     // fetching
     setLoading(true);
 
-    let newPrice;
+    let newPrice,distancia;
 
     if (
       prev &&
@@ -78,7 +78,7 @@ const FormPresupuestar = (props) => {
 
       if(res.value && typeof res.value === "number"){
         newPrice = res.value;
-        setDistancia(res.distancia);
+        setDistancia(res.ubicacion);
       } else {
         newPrice = res;
         setDistancia(0);
