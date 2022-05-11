@@ -119,6 +119,8 @@ const FormPresupuestar = (props) => {
             },
           });
 
+          if(!name) return;
+
           const text = `Hola Ezequiel, soy ${name} y quiero presupuestar la siguiente fiesta:
           Fecha: ${fecha}
           Turno: ${turno}
