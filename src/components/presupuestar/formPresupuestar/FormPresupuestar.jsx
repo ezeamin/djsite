@@ -52,7 +52,7 @@ const FormPresupuestar = (props) => {
     // fetching
     setLoading(true);
 
-    let newPrice,distancia;
+    let newPrice,distancia,formatFecha;
 
     if (
       prev &&
@@ -64,7 +64,8 @@ const FormPresupuestar = (props) => {
       prev.humo === humo
     ) {
       newPrice = Number.parseInt(prev.price);
-      distancia = Number.parseFloat(prev.distancia)
+      distancia = Number.parseFloat(prev.distancia);
+      formatFecha = prev.fecha;
     } else {
       // no hay datos
       const res = await fetchPrice(
@@ -79,9 +80,11 @@ const FormPresupuestar = (props) => {
       if(res.value){
         newPrice = res.value;
         distancia = res.ubicacion;
+        formatFecha = res.fecha;
       } else {
         newPrice = res;
         distancia = 0;
+        formatFecha = "";
       }
 
       if (typeof newPrice === "number") {
@@ -93,7 +96,8 @@ const FormPresupuestar = (props) => {
           servicio,
           humo,
           price: newPrice,
-          distancia: res.ubicacion
+          distancia: res.ubicacion,
+          formatFecha : res.fecha,
         });
       }
     }
@@ -139,7 +143,7 @@ const FormPresupuestar = (props) => {
           const link = `https://www.google.com/maps/search/?api=1%26query=${ubic}`;
 
           const text = `Hola Ezequiel, soy ${name} y quiero presupuestar la siguiente fiesta:
-          Fecha: ${fecha}
+          Fecha: ${formatFecha}
           Turno: ${turno}
           Ubicación: ${ubicacion} (${distancia}km)
           Tiempo: ${tiempo} horas
