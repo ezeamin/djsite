@@ -1,7 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 import { fetchPrice } from "../../../api/fetchingFunctions";
-import LoadingScreen from "../loadingScreen/LoadingScreen";
+import LoadingScreen from "../../loadingScreen/LoadingScreen";
 import Fecha from "./Fecha";
 import Humo from "./Humo";
 import Servicio from "./Servicio";

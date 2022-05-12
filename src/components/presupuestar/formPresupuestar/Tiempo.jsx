@@ -20,9 +20,11 @@ const Tiempo = (props) => {
         tiempo5.current.className = "form__button";
         tiempo6.current.className = "form__button";
         tiempoMas.current.className = "form__button";
-        setTiempoNoExacto(true);
-        props.setEstMay(false);
-        props.setEstMen(true);
+        if (!props.new) {
+          setTiempoNoExacto(true);
+          props.setEstMay(false);
+          props.setEstMen(true);
+        }
         break;
       }
       case "4": {
@@ -31,9 +33,11 @@ const Tiempo = (props) => {
         tiempo5.current.className = "form__button";
         tiempo6.current.className = "form__button";
         tiempoMas.current.className = "form__button";
-        setTiempoNoExacto(false);
-        props.setEstMay(false);
-        props.setEstMen(false);
+        if (!props.new) {
+          setTiempoNoExacto(false);
+          props.setEstMay(false);
+          props.setEstMen(false);
+        }
         break;
       }
       case "5": {
@@ -42,9 +46,11 @@ const Tiempo = (props) => {
         tiempo5.current.className = "form__button form__button--selected";
         tiempo6.current.className = "form__button";
         tiempoMas.current.className = "form__button";
-        setTiempoNoExacto(false);
-        props.setEstMay(false);
-        props.setEstMen(false);
+        if (!props.new) {
+          setTiempoNoExacto(false);
+          props.setEstMay(false);
+          props.setEstMen(false);
+        }
         break;
       }
       case "6": {
@@ -53,9 +59,11 @@ const Tiempo = (props) => {
         tiempo5.current.className = "form__button";
         tiempo6.current.className = "form__button form__button--selected";
         tiempoMas.current.className = "form__button";
-        setTiempoNoExacto(false);
-        props.setEstMay(false);
-        props.setEstMen(false);
+        if (!props.new) {
+          setTiempoNoExacto(false);
+          props.setEstMay(false);
+          props.setEstMen(false);
+        }
         break;
       }
       case "Mas": {
@@ -64,9 +72,11 @@ const Tiempo = (props) => {
         tiempo5.current.className = "form__button";
         tiempo6.current.className = "form__button";
         tiempoMas.current.className = "form__button form__button--selected";
-        setTiempoNoExacto(true);
-        props.setEstMay(true);
-        props.setEstMen(false);
+        if (!props.new) {
+          setTiempoNoExacto(true);
+          props.setEstMay(true);
+          props.setEstMen(false);
+        }
         break;
       }
       default: {
@@ -79,7 +89,7 @@ const Tiempo = (props) => {
     <div className="form-group mt-3">
       <div className="form__fechaGroup mb-1">
         <p className="form__label m-0">Tiempo (horas)</p>
-        {tiempoNoExacto && (
+        {!props.new && tiempoNoExacto && (
           <Badge bg="warning" className="mt-1 mb-0 form__fecha__badge">
             <i class="fa-solid fa-triangle-exclamation"></i>
             &nbsp;Valor no exacto
