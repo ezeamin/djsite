@@ -1,36 +1,36 @@
-.title{
-    font-size: 2.5rem;
+.title {
+  font-size: 2.5rem;
 }
 
-.title__hr{
-    color: aliceblue;
-    height: 10px;
-    margin: 0;
-    margin-bottom: 1rem;
+.title__hr {
+  color: aliceblue;
+  height: 10px;
+  margin: 0;
+  margin-bottom: 1rem;
 }
 
-
-.title__buttons{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+.title__buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.title__button{
-    padding: 0.5rem 0.75rem;
-    height: 100%;
-    color: aliceblue;
-    margin: 0;
-    border-radius: 50%;
-    background: linear-gradient(
+.title__button {
+  padding: 0.5rem 0.75rem;
+  height: 100%;
+  color: aliceblue;
+  margin: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background: linear-gradient(
     0deg,
     var(--color-red-dark) 0%,
     var(--color-red-light) 100%
   );
 }
 
-.title__button--history{
-    background: linear-gradient(
+.title__button--history {
+  background: linear-gradient(
     0deg,
     var(--color-gray-dark) 0%,
     var(--color-gray-light) 100%

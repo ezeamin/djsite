@@ -3,7 +3,7 @@ import axios from "./axios";
 export const fetchPrice = async (
   fecha,
   turno,
-  locData,
+  ubicacion,
   tiempo,
   servicio,
   humo
@@ -12,7 +12,7 @@ export const fetchPrice = async (
     const res = await axios.post("", {
       fecha,
       turno,
-      locData,
+      ubicacion,
       tiempo,
       servicio,
       humo,
