@@ -79,7 +79,7 @@ const FormPresupuestar = (props) => {
 
       if(res.value){
         newPrice = res.value;
-        distancia = res.ubicacion;
+        distancia = res.distancia;
         formatFecha = res.fecha;
       } else {
         newPrice = res;
@@ -96,7 +96,7 @@ const FormPresupuestar = (props) => {
           servicio,
           humo,
           price: newPrice,
-          distancia: res.ubicacion,
+          distancia: res.distancia,
           formatFecha : res.fecha,
         });
       }
