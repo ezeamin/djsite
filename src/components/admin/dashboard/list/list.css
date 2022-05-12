@@ -34,7 +34,7 @@
 }
 
 .form__button--blue {
-  color: aliceblue;
+  color: aliceblue !important;
   background: linear-gradient(
     0deg,
     var(--color-blue-dark) 0%,
