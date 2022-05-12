@@ -82,7 +82,7 @@ const Tiempo = (props) => {
         {tiempoNoExacto && (
           <Badge bg="warning" className="mt-1 mb-0 form__fecha__badge">
             <i class="fa-solid fa-triangle-exclamation"></i>
-            &nbsp;Valor estimado
+            &nbsp;Valor no exacto
           </Badge>
         )}
       </div>
