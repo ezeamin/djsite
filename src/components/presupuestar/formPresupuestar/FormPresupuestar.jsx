@@ -117,7 +117,7 @@ const FormPresupuestar = (props) => {
         confirmButtonColor: "#77dd77",
         cancelButtonColor: "#8d8d8d",
         confirmButtonText: "Contactar por WhatsApp",
-        footer: `Recomiendo leer los&nbsp;<a href="https://bit.ly/tyc-djezeamin-1" target="_blank" class="mb-0 form__swal__link">terminos y condiciones</a>`,
+        footer: `<p class="mb-0 text-center">Recomiendo leer los&nbsp;<a href="https://bit.ly/tyc-djezeamin-1" target="_blank" class="mb-0 form__swal__link">terminos y condiciones</a></p>`,
       }).then(async (result) => {
         if (result.isConfirmed) {
           const { value: name } = await Swal.fire({

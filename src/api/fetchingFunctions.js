@@ -1,11 +1,11 @@
 import axios from "./axios";
 
-export const fetchPrice = async (fecha, turno, locData, tiempo, servicio, humo) => {
+export const fetchPrice = async (fecha, turno, ubicacion, tiempo, servicio, humo) => {
   try {
     const res = await axios.post("", {
       fecha,
       turno,
-      locData,
+      ubicacion,
       tiempo,
       servicio,
       humo,
