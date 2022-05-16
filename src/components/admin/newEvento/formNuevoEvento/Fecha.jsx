@@ -8,18 +8,18 @@ const Fecha = (props) => {
   const [badgeText, setBadgeText] = React.useState("");
 
   const fechaInput = useRef();
-  const turnoTarde = useRef();
+  const turnoDia = useRef();
   const turnoNoche = useRef();
 
   const handleTurno = (e) => {
     props.setTurno(e.target.value);
 
-    if (e.target.value === "Tarde") {
-      turnoTarde.current.classList =
+    if (e.target.value === "Dia") {
+      turnoDia.current.classList =
         "form__button form__button--selected";
       turnoNoche.current.classList = "form__button";
     } else {
-      turnoTarde.current.classList = "form__button";
+      turnoDia.current.classList = "form__button";
       turnoNoche.current.classList =
         "form__button form__button--selected";
     }
@@ -71,10 +71,10 @@ const Fecha = (props) => {
       />
       <div className="form__buttons mt-2">
         <input
-          ref={turnoTarde}
+          ref={turnoDia}
           className="form__button"
           type="button"
-          value="Tarde"
+          value="Dia"
           onClick={handleTurno}
         />
         <input

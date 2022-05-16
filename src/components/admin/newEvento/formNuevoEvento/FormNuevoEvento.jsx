@@ -44,7 +44,9 @@ const FormNuevoEvento = (props) => {
     }
   }, [fecha, turno]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     // comprobaciones
     if (
       !tiempo ||
@@ -130,7 +132,7 @@ const FormNuevoEvento = (props) => {
   //
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form onSubmit={handleSubmit}>
       {loading && <LoadingScreen />}
       <BasicInput
         label="Nombre del evento"
