@@ -7,7 +7,9 @@ const Event = (props) => {
         //...
         break;
       case "Whatsapp":
-        //window.
+        const url = `https://wa.me/+549${props.client.phone}`;
+        window.open(url, "_blank").focus();
+
         break;
       default:
         break;
@@ -18,10 +20,14 @@ const Event = (props) => {
     <div className="py-2 list__container container my-3">
       <div className="event__title__container">
         <h3 className="main__title event__title mb-0 mt-2">{props.name}</h3>
-        <p className="my-0 event__title__fecha">{props.fecha}</p>
+        <p className="my-0 event__title__fecha">{props.formattedFecha}</p>
       </div>
       <hr className="mt-1 mb-3 event__mainHr" />
       <div>
+        <div className="event__detail__group">
+          <p className="mb-0">Fecha:</p>
+          <p className="mb-0 event__content">{props.fecha}</p>
+        </div>
         <div className="event__detail__group">
           <p className="mb-0">Turno:</p>
           <p className="mb-0 event__content">{props.turno}</p>
