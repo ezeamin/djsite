@@ -14,9 +14,9 @@ export const fetchGet = async (link) => {
   }
 };
 
-export const fetchPut = async (link,event) => {
+export const fetchPut = async (link,data) => {
   try {
-    const res = await axios.put(link, event);
+    const res = await axios.put(link, data);
 
     return res;
   } catch (err) {
