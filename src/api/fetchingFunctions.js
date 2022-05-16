@@ -1,24 +1,10 @@
 import axios from "./axios";
 
-export const fetchPrice = async (
-  fecha,
-  turno,
-  ubicacion,
-  tiempo,
-  servicio,
-  humo
-) => {
+export const fetchGet = async (link) => {
   try {
-    const res = await axios.post("", {
-      fecha,
-      turno,
-      ubicacion,
-      tiempo,
-      servicio,
-      humo,
-    });
+    const res = await axios.get(link);
 
-    return res.data;
+    return res;
   } catch (err) {
     try {
       return err.response.data.message;
@@ -28,9 +14,9 @@ export const fetchPrice = async (
   }
 };
 
-export const fetchEvent = async (event) => {
+export const fetchPut = async (link,event) => {
   try {
-    const res = await axios.put("/event", event);
+    const res = await axios.put(link, event);
 
     return res;
   } catch (err) {

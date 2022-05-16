@@ -1,12 +1,11 @@
 import React from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import { fetchEvent } from "../../../../api/fetchingFunctions";
+import { fetchPut } from "../../../../api/fetchingFunctions";
 import LoadingScreen from "../../../loadingScreen/LoadingScreen";
 import Fecha from "./Fecha";
 import Humo from "./Humo";
 import Servicio from "./Servicio";
-import SubmitButton from "./SubmitButton";
 import Tiempo from "./Tiempo";
 import Ubicacion from "./Ubicacion";
 import Horarios from "./Horarios";
@@ -102,7 +101,7 @@ const FormNuevoEvento = (props) => {
       paid,
     };
 
-    const res = await fetchEvent(event);
+    const res = await fetchPut("/event",event);
 
     setLoading(false);
 
@@ -166,7 +165,12 @@ const FormNuevoEvento = (props) => {
       />
       <hr className="text-light mt-4" />
       <Precio price={price} paid={paid} setPrice={setPrice} setPaid={setPaid} />
-      <SubmitButton handleSubmit={handleSubmit} />
+      <button
+        className="mt-3 mb-2 form__button form__button__submit"
+        type="submit"
+      >
+        Guardar
+      </button>
     </form>
   );
 };

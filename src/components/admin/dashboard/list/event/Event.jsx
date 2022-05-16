@@ -2,11 +2,15 @@ import React from "react";
 
 const Event = (props) => {
   const handleClick = (mode) => {
-    if (mode === "Asistir") {
-      //...
-    } else {
-      //modificar
-      // ...
+    switch(mode){
+      case "Asistir":
+        //...
+        break;
+      case "Whatsapp":
+        //window.
+        break;
+      default:
+        break;
     }
   };
 
@@ -56,25 +60,31 @@ const Event = (props) => {
         <hr className="my-1" />
         <div className="event__detail__group">
           <p className="mb-0">Valor:</p>
-          <p className="mb-0 fw-bold event__content">${props.value}</p>
+          <p className="mb-0 fw-bold event__content">$ {props.price}</p>
         </div>
         <div className="event__detail__group">
           <p className="mb-0">Pagado:</p>
-          <p className="mb-0 fw-bold event__content">${props.paid}</p>
+          <p className="mb-0 fw-bold event__content">$ {props.paid}</p>
         </div>
       </div>
       <div className="event__buttons mt-3">
         <button
-          className="form__button form__button__submit form__button__events"
+          className="form__button form__button__submit"
           onClick={() => handleClick("Modificar")}
         >
           Modificar
         </button>
         <button
-          className="form__button form__button--blue form__button__events"
+          className="form__button form__button--blue"
           onClick={() => handleClick("Asistir")}
         >
           Asistir
+        </button>
+        <button
+          className="form__button form__button--wpp"
+          onClick={() => handleClick("Whatsapp")}
+        >
+          <i className="fa-brands fa-whatsapp" />
         </button>
       </div>
     </div>

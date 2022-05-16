@@ -1,9 +1,10 @@
 import React from "react";
+import { fetchGet } from "../../../../api/fetchingFunctions";
 import Event from "./event/Event";
 import "./list.css";
 
 const mock = {
-  fecha: "Vie 13 May (13/05/2022)",//"2020-06-01",
+  fecha: "Vie 13 May (13/05/2022)", //"2020-06-01",
   turnos: [
     {
       turno: "Noche",
@@ -25,7 +26,7 @@ const mock = {
 };
 
 const mock2 = {
-  fecha: "Sab 14 May (14/05/2022)",//"2020-06-01",
+  fecha: "Sab 14 May (14/05/2022)", //"2020-06-01",
   turnos: [
     {
       turno: "Tarde",
@@ -47,20 +48,28 @@ const mock2 = {
 };
 
 const List = () => {
-  const [dates, setDates] = React.useState([mock,mock2]);
+  const [dates, setDates] = React.useState([]);
 
-  //   React.useEffect(() => {}, []);
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetchGet("/events");
+
+      setDates(res.data);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="mt-3">
       {dates.map((date, index) => {
         if (date.turnos.length >= 2) {
-          date.turnos.map((turno, index) => {
+          return date.turnos.map((turno, index) => {
             return <Event fecha={date.fecha} {...turno} key={index} />;
           });
-        } else {
-          return <Event fecha={date.fecha} {...date.turnos[0]} key={index} />;
         }
+
+        return <Event fecha={date.fecha} {...date.turnos[0]} key={index} />;
       })}
     </div>
   );
