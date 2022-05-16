@@ -16,7 +16,7 @@ export const fetchPrice = async (fecha, turno, ubicacion, tiempo, servicio, humo
     try {
       return err.response.data.message;
     } catch (err) {
-      return "Error al conectar con el servidor";
+      return "Perdon! Error al conectar con el servidor. Reintentá o contactá con Ezequiel";
     }
   }
 };

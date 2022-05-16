@@ -4,8 +4,8 @@ import { fetchPrice } from "../../../api/fetchingFunctions";
 import LoadingScreen from "../loadingScreen/LoadingScreen";
 import Fecha from "./Fecha";
 import Humo from "./Humo";
+import { infoMessage } from "./infoMessage";
 import Servicio from "./Servicio";
-import SubmitButton from "./SubmitButton";
 import Tiempo from "./Tiempo";
 import Ubicacion from "./Ubicacion";
 
@@ -29,9 +29,11 @@ const FormPresupuestar = (props) => {
     }
   }, [fecha, turno]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     // comprobaciones
-    if (!tiempo || !servicio) {
+    if (!tiempo || !servicio || !ubicacion) {
       return Swal.fire({
         title: "Error",
         text: "Completa los campos",
@@ -52,7 +54,7 @@ const FormPresupuestar = (props) => {
     // fetching
     setLoading(true);
 
-    let newPrice,distancia,formatFecha;
+    let newPrice, distancia, formatFecha;
 
     if (
       prev &&
@@ -77,7 +79,7 @@ const FormPresupuestar = (props) => {
         humo
       );
 
-      if(res.value){
+      if (res.value) {
         newPrice = res.value;
         distancia = res.distancia;
         formatFecha = res.fecha;
@@ -97,7 +99,7 @@ const FormPresupuestar = (props) => {
           humo,
           price: newPrice,
           distancia: res.distancia,
-          formatFecha : res.fecha,
+          formatFecha: res.fecha,
         });
       }
     }
@@ -106,62 +108,23 @@ const FormPresupuestar = (props) => {
 
     if (typeof newPrice === "number") {
       props.setPrice(newPrice);
-      const signo = tiempo === "Menos" ? "<" : tiempo==="Mas" ? ">" : "";
-      const title = `${signo} $ ${newPrice}`;
-
-      Swal.fire({
-        title: title,
-        text: "Este valor es solo estimativo y no necesariamente final. Por favor, contactar con Ezequiel para confirmar y continuar el proceso",
-        cancelButtonText: "Cerrar",
-        showCancelButton: true,
-        confirmButtonColor: "#77dd77",
-        cancelButtonColor: "#8d8d8d",
-        confirmButtonText: "Contactar por WhatsApp",
-        footer: `<p class="mb-0 text-center">Recomiendo leer los&nbsp;<a href="https://bit.ly/tyc-djezeamin-1" target="_blank" class="mb-0 form__swal__link">terminos y condiciones</a></p>`,
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          const { value: name } = await Swal.fire({
-            title: "Ingresá tu nombre",
-            input: "text",
-            inputLabel: "Nombre",
-            showCancelButton: true,
-            confirmButtonColor: "#77dd77",
-            cancelButtonColor: "#8d8d8d",
-            confirmButtonText: "Continuar",
-            cancelButtonText: "Cancelar",
-            inputValidator: (value) => {
-              if (!(value.trim())) {
-                return "Por favor, escribí tu nombre";
-              }
-            },
-          });
-
-          if (!name) return;
-
-          let ubic = ubicacion.replaceAll(" ", "%2520");
-
-          const link = `https://www.google.com/maps/search/?api=1%26query=${ubic}`;
-
-          const text = `Hola Ezequiel, soy ${name} y quiero presupuestar la siguiente fiesta:
-          Fecha: ${formatFecha}
-          Turno: ${turno}
-          Ubicación: ${ubicacion} (${distancia}km)
-          Tiempo: ${tiempo} horas
-          Servicio: ${servicio}
-          Humo: ${humo ? "Si" : "No"}
-
-          El presupuesto es de: ${title}
-          
-          `;
-
-          const url = `https://wa.me/+5493815038570?text=${encodeURI(text)+link}`;
-          window.open(url, "_blank").focus();
-        }
-      });
+      infoMessage(
+        fecha,
+        turno,
+        ubicacion,
+        tiempo,
+        servicio,
+        humo,
+        newPrice,
+        distancia,
+        formatFecha
+      );
     } else {
       Swal.fire({
         title: "Error",
-        text: newPrice ? newPrice : "No se pudo conectar con el servidor. Intentar nuevamente o contactar con Ezequiel",
+        text: newPrice
+          ? newPrice
+          : "No se pudo conectar con el servidor. Intentar nuevamente o contactar con Ezequiel",
         icon: "error",
         confirmButtonText: "Ok",
       });
@@ -171,7 +134,7 @@ const FormPresupuestar = (props) => {
   //
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form onSubmit={handleSubmit}>
       {loading && <LoadingScreen />}
       <Fecha
         fecha={fecha}
@@ -194,7 +157,12 @@ const FormPresupuestar = (props) => {
       />
       <Servicio servicio={servicio} setServicio={setServicio} />
       <Humo humo={humo} setHumo={setHumo} />
-      <SubmitButton handleSubmit={handleSubmit} />
+      <button
+        className="mt-3 mb-2 form__button form__button__submit"
+        type="submit"
+      >
+        Calcular
+      </button>
     </form>
   );
 };
