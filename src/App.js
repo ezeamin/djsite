@@ -25,6 +25,7 @@ function App() {
                 <Route element={<RequireAuth />}>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/evento" element={<PanelNewEvento />} />
+                  <Route path="/evento/:id/:id2" element={<PanelNewEvento edit/>} />
                 </Route>
               </Route>
             </Routes>

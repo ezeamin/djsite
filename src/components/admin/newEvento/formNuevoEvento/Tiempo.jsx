@@ -10,10 +10,8 @@ const Tiempo = (props) => {
   const tiempo6 = useRef();
   const tiempoMas = useRef();
 
-  const handleTiempo = (e) => {
-    props.setTiempo(e.target.value);
-
-    switch (e.target.value) {
+  const types = (type) => {
+    switch (type) {
       case "Menos": {
         tiempoMenos.current.className = "form__button form__button--selected";
         tiempo4.current.className = "form__button";
@@ -83,7 +81,17 @@ const Tiempo = (props) => {
         break;
       }
     }
+  }
+
+  const handleTiempo = (e) => {
+    props.setTiempo(e.target.value);
+
+    types(e.target.value);
   };
+
+  React.useEffect(() => {
+    types(props.tiempo);
+  }, [props.tiempo]);
 
   return (
     <div className="form-group mt-3">

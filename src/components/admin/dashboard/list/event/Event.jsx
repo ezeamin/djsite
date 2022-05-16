@@ -1,58 +1,23 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { fetchGet, fetchPut } from "../../../../../api/fetchingFunctions";
+import { asistir } from "./asistir";
 
 const Event = (props) => {
+  const navigate = useNavigate();
+
   const handleClick = (mode) => {
     switch (mode) {
       case "Asistir":
-        Swal.fire({
-          title: "¿Estás seguro?",
-          text: "¡No podrás revertir esta acción!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Sí, asistir!",
-          cancelButtonText: "Cancelar",
-        }).then(async (result) => {
-          if (result.value) {
-            const data = {
-              idFecha: props.fechaId,
-              idEvento: props._id,
-              fechaEvento: props.fecha,
-            }
-            const res = await fetchPut(
-              `/events/old`, data
-            );
-
-            if (res.status !== 200) {
-              return Swal.fire({
-                title: "¡Error!",
-                text: `No se pudo completar la acción (E_${res.status ? res.status : "?"})`,
-                icon: "error",
-                confirmButtonColor: "#3085d6",
-                confirmButtonText: "Ok",
-              });
-            }
-
-            Swal.fire({
-              title: "¡Asistencia registrada!",
-              text: "¡Gracias por asistir!",
-              icon: "success",
-              showCancelButton: false,
-              showConfirmButton: false,
-              timer: 1500,
-            }).then(() => {
-              window.location.reload();
-            });
-          }
-        });
+        asistir(props.fecha, props.fechaId, props._id);
+        break;
+      case "Modificar":
+        navigate(`/evento/${props.fechaId}/${props._id}`);
         break;
       case "Whatsapp":
         const url = `https://wa.me/+549${props.client.phone}`;
         window.open(url, "_blank").focus();
-
         break;
       default:
         break;
@@ -78,7 +43,7 @@ const Event = (props) => {
         <div className="event__detail__group">
           <p className="mb-0">Horario:</p>
           <p className="mb-0 event__content">
-            {props.start} - {props.end}
+            {props.start} - {props.end} ({props.tiempo} horas)
           </p>
         </div>
         <div className="event__detail__group">

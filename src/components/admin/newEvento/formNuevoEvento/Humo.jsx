@@ -3,6 +3,14 @@ import React, { useRef } from "react";
 const Humo = (props) => {
   const humoTick = useRef();
 
+  React.useEffect(() => {
+    if (props.humo) {
+      humoTick.current.style.opacity = "100";
+    } else {
+      humoTick.current.style.opacity = "0";
+    }
+  }, [props.humo]);
+
   const handleHumo = () => {
     const prev = props.humo;
     props.setHumo(!props.humo);

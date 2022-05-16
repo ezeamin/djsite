@@ -11,10 +11,8 @@ const Fecha = (props) => {
   const turnoDia = useRef();
   const turnoNoche = useRef();
 
-  const handleTurno = (e) => {
-    props.setTurno(e.target.value);
-
-    if (e.target.value === "Dia") {
+  const types = (type) => {
+    if (type === "Dia") {
       turnoDia.current.classList =
         "form__button form__button--selected";
       turnoNoche.current.classList = "form__button";
@@ -23,7 +21,17 @@ const Fecha = (props) => {
       turnoNoche.current.classList =
         "form__button form__button--selected";
     }
+  }
+
+  const handleTurno = (e) => {
+    props.setTurno(e.target.value);
+
+    types(e.target.value);
   };
+
+  React.useEffect(() => {
+    types(props.turno);
+  }, [props.turno]);
 
   const handleFechaBlur = (e) => {
     const fecha = e.target.value;

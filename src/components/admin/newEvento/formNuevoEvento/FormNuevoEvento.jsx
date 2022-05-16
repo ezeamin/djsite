@@ -13,6 +13,8 @@ import BasicInput from "./BasicInput";
 import Extra from "./Extra";
 import Cliente from "./Cliente";
 import Precio from "./Precio";
+import Loading from "../../loading/Loading";
+import Error from "./Error";
 
 const FormNuevoEvento = (props) => {
   const [name, setName] = React.useState("");
@@ -34,6 +36,29 @@ const FormNuevoEvento = (props) => {
   const [ubicacionError, setUbicacionError] = React.useState(false);
 
   const navigate = useNavigate();
+
+  // Modify existing event
+
+  const { data } = props;
+
+  React.useEffect(() => {
+    if (data) {
+      setName(data.name);
+      setFecha(data.fecha);
+      setTurno(data.turno);
+      setStart(data.start);
+      setEnd(data.end);
+      setUbicacion(data.ubicacion);
+      setTiempo(data.tiempo);
+      setServicio(data.servicio);
+      setHumo(data.humo);
+      setExtra(data.extra);
+      setClientName(data.client.name);
+      setClientPhone(data.client.phone);
+      setPrice(data.price);
+      setPaid(data.paid);
+    }
+  }, [data]);
 
   //  Fetching backend data
 
@@ -101,7 +126,10 @@ const FormNuevoEvento = (props) => {
       paid,
     };
 
-    const res = await fetchPut("/event",event);
+    const link = props.data
+      ? `/event/edit/${props.fechaId}/${props.eventoId}`
+      : "/event";
+    const res = await fetchPut(link, event);
 
     setLoading(false);
 
@@ -112,7 +140,7 @@ const FormNuevoEvento = (props) => {
         showConfirmButton: false,
         showCloseButton: false,
         timer: 1500,
-      }).then(async (result) => {
+      }).then(async () => {
         navigate("/");
       });
     } else {
@@ -130,6 +158,12 @@ const FormNuevoEvento = (props) => {
 
   //
 
+  if (props.loading) {
+    return <Loading />;
+  }
+  if (props.error) {
+    return <Error />;
+  }
   return (
     <form onSubmit={handleSubmit}>
       {loading && <LoadingScreen />}

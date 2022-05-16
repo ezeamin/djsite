@@ -4,11 +4,9 @@ const Servicio = (props) => {
   const servicioBasico = useRef();
   const servicioSonido = useRef();
   const servicioCompleto = useRef();
-  
-  const handleServicio = (e) => {
-    props.setServicio(e.target.value);
 
-    switch (e.target.value) {
+  const types = (type) => {
+    switch (type) {
       case "Basico": {
         servicioBasico.current.className =
           "form__button form__button--selected";
@@ -40,7 +38,17 @@ const Servicio = (props) => {
         break;
       }
     }
+  }
+  
+  const handleServicio = (e) => {
+    props.setServicio(e.target.value);
+
+    types(e.target.value);
   };
+
+  React.useEffect(() => {
+    types(props.servicio);
+  }, [props.servicio]);
 
   return (
     <div className="form-group mt-3">
