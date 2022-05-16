@@ -16,7 +16,7 @@ const Fecha = (props) => {
       turnoDia.current.classList =
         "form__button form__button--selected";
       turnoNoche.current.classList = "form__button";
-    } else {
+    } else if (type === "Noche") {
       turnoDia.current.classList = "form__button";
       turnoNoche.current.classList =
         "form__button form__button--selected";
