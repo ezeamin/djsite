@@ -18,13 +18,13 @@ import Error from "./Error";
 
 const FormNuevoEvento = (props) => {
   const [name, setName] = React.useState("");
-  const [fecha, setFecha] = React.useState(undefined);
-  const [turno, setTurno] = React.useState(undefined);
-  const [start, setStart] = React.useState(undefined);
-  const [end, setEnd] = React.useState(undefined);
+  const [fecha, setFecha] = React.useState("");
+  const [turno, setTurno] = React.useState("");
+  const [start, setStart] = React.useState("");
+  const [end, setEnd] = React.useState("");
   const [ubicacion, setUbicacion] = React.useState("");
-  const [tiempo, setTiempo] = React.useState(undefined);
-  const [servicio, setServicio] = React.useState(undefined);
+  const [tiempo, setTiempo] = React.useState("");
+  const [servicio, setServicio] = React.useState("");
   const [humo, setHumo] = React.useState(false);
   const [extra, setExtra] = React.useState("");
   const [clientName, setClientName] = React.useState("");

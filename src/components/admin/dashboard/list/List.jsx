@@ -8,6 +8,7 @@ const List = () => {
   const [dates, setDates] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [empty, setEmpty] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -15,6 +16,9 @@ const List = () => {
 
       if(res.status === 204){
         setEmpty(true);
+      }
+      else if(res.status !== 200){
+        setError(true);
       }
       else setDates(res.data);
 
@@ -27,6 +31,9 @@ const List = () => {
   if(loading) return <Loading />
   if(empty) return (
     <p className="mb-0 text-light text-center p-5 fw-bold">No hay eventos!</p>
+  )
+  if(error) return (
+    <p className="mb-0 text-light text-center p-5 fw-bold">ERROR</p>
   )
   return (
     <div className="mt-3">

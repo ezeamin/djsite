@@ -28,6 +28,20 @@ export const fetchPut = async (link,data) => {
   }
 };
 
+export const fetchDelete = async (link) => {
+  try {
+    const res = await axios.delete(link);
+
+    return res;
+  } catch (err) {
+    try {
+      return err.response.data.message;
+    } catch (err) {
+      return "Error al conectar con el servidor";
+    }
+  }
+}
+
 export const ping = async () => {
   try {
     await axios.get("/");
