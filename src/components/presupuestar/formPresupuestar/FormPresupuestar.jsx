@@ -67,7 +67,7 @@ const FormPresupuestar = (props) => {
     ) {
       newPrice = Number.parseInt(prev.price);
       distancia = Number.parseFloat(prev.distancia);
-      formatFecha = prev.fecha;
+      formatFecha = prev.formatFecha;
     } else {
       // no hay datos
       const res = await fetchPrice(
@@ -163,6 +163,9 @@ const FormPresupuestar = (props) => {
       >
         Calcular
       </button>
+      <div className="text-center py-2 mb-1">
+        <a href="https://bit.ly/tyc-djezeamin-1" target="_blank" rel="noopener noreferrer" className="tyc">Terminos y condiciones</a>
+      </div>
     </form>
   );
 };

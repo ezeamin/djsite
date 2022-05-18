@@ -163,3 +163,13 @@
   color: rgb(148, 148, 148);
   font-weight: 600;
 }
+
+.tyc{
+  color: aliceblue;
+  font-weight: 600;
+  /* margin: 1.5rem 0 !important; */
+}
+
+.tyc:hover{
+  color: rgb(148, 148, 148);
+} 
