@@ -14,8 +14,6 @@ const PanelFechas = () => {
     const fetching = async () => {
       const res = await fetchFechas();
 
-      console.log(res);
-
       if (res.status === 200) setFechas(res.data);
       else setError(true);
 
@@ -47,7 +45,9 @@ const PanelFechas = () => {
     );
   }
   return (
-    <div className="container my-3">
+    <div className="container py-2">
+    <BackButton />
+    <div className="my-3">
       <Title text="Proximas fechas" />
       {fechas.map((fecha, index) => {
         if (fecha.turnos.length > 1) {
@@ -66,6 +66,7 @@ const PanelFechas = () => {
             <FechaItem name={fecha.turnos[0].name} turno={fecha.turnos[0].turno} formattedFecha={fecha.formattedFecha} key={index} />
           );
       })}
+    </div>
     </div>
   );
 };

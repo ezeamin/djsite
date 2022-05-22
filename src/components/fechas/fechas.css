@@ -1,0 +1,9 @@
+.event__container {
+  border-radius: 15px;
+  background-color: rgba(240, 248, 255, 0.486);
+  color: #2f2f2f;
+}
+
+.event__title {
+  color: #2f2f2f;
+}
