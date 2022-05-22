@@ -9,6 +9,10 @@
     border-radius: 15px;
 }
 
+.loadingScreen--transparent{
+    background-color: transparent;
+}
+
 .spinner {
     width: 40px;
     height: 40px;
