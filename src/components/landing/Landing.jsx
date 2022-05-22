@@ -26,12 +26,11 @@ const Landing = () => {
           internal
         />
         <MainButton
-          text="Fechas disponibles"
-          link="#"
+          text="Proximas fechas"
+          link="/fechas"
           icon="fa-calendar-days"
           type="fechas"
           internal
-          disabled
         />
         <MainButton
           text="Enganchados"

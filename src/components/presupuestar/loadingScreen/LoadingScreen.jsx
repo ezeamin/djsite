@@ -1,9 +1,10 @@
 import React from 'react';
 import './loadingScreen.css';
 
-const LoadingScreen = () => {
+const LoadingScreen = (props) => {
+    const className = props.className ? (props.className + " loadingScreen") : "loadingScreen";
     return (
-        <div className='loadingScreen'>
+        <div className={className}>
             <div className="spinner"></div>
         </div>
     );

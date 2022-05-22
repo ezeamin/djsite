@@ -21,6 +21,20 @@ export const fetchPrice = async (fecha, turno, ubicacion, tiempo, servicio, humo
   }
 };
 
+export const fetchFechas = async () => {
+  try {
+    const res = await axios.get("/events");
+
+    return res;
+  } catch (err) {
+    try {
+      return err.response.data.message;
+    } catch (err) {
+      return "Perdon! Error al conectar con el servidor. Reintentá o contactá con Ezequiel";
+    }
+  }
+};
+
 export const ping = async () => {
   try {
     await axios.get("/");
