@@ -1,12 +1,10 @@
 import Swal from "sweetalert2";
 
 export const infoMessage = (
-  fecha,
   turno,
   ubicacion,
   tiempo,
   servicio,
-  humo,
   newPrice,
   distancia,
   formatFecha
@@ -22,7 +20,7 @@ export const infoMessage = (
     confirmButtonColor: "#77dd77",
     cancelButtonColor: "#8d8d8d",
     confirmButtonText: "Contactar por WhatsApp",
-    footer: `<p class="mb-0 text-center">Recomiendo leer los&nbsp;<a href="https://bit.ly/tyc-djezeamin-1" target="_blank" class="mb-0 form__swal__link">terminos y condiciones</a></p>`,
+    footer: `<p class="mb-0 text-center">Es importante leer los&nbsp;<a href="https://bit.ly/tyc-djezeamin-1" target="_blank" class="mb-0 form__swal__link">terminos y condiciones</a></p>`,
   }).then(async (result) => {
     if (result.isConfirmed) {
       const { value: name } = await Swal.fire({
@@ -53,7 +51,6 @@ export const infoMessage = (
           Ubicación: ${ubicacion} (${distancia}km)
           Tiempo: ${tiempo} horas
           Servicio: ${servicio}
-          Humo: ${humo ? "Si" : "No"}
 
           El presupuesto es de: ${title}
           

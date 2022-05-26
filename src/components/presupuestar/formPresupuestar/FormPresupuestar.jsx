@@ -23,11 +23,11 @@ const FormPresupuestar = (props) => {
 
   //  Fetching backend data
 
-  React.useEffect(() => {
-    if (fecha && turno) {
-      // ...
-    }
-  }, [fecha, turno]);
+  // React.useEffect(() => {
+  //   if (fecha && turno) {
+  //     // ...
+  //   }
+  // }, [fecha, turno]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,8 +62,8 @@ const FormPresupuestar = (props) => {
       prev.turno === turno &&
       prev.ubicacion === ubicacion &&
       prev.tiempo === tiempo &&
-      prev.servicio === servicio &&
-      prev.humo === humo
+      prev.servicio === servicio
+      // && prev.humo === humo
     ) {
       newPrice = Number.parseInt(prev.price);
       distancia = Number.parseFloat(prev.distancia);
@@ -76,7 +76,7 @@ const FormPresupuestar = (props) => {
         ubicacion,
         tiempo,
         servicio,
-        humo
+        true //humo
       );
 
       if (res.value) {
@@ -96,7 +96,7 @@ const FormPresupuestar = (props) => {
           ubicacion,
           tiempo,
           servicio,
-          humo,
+          humo: true,
           price: newPrice,
           distancia: res.distancia,
           formatFecha: res.fecha,
@@ -109,12 +109,10 @@ const FormPresupuestar = (props) => {
     if (typeof newPrice === "number") {
       props.setPrice(newPrice);
       infoMessage(
-        fecha,
         turno,
         ubicacion,
         tiempo,
         servicio,
-        humo,
         newPrice,
         distancia,
         formatFecha
@@ -156,7 +154,7 @@ const FormPresupuestar = (props) => {
         setEstMen={props.setEstMen}
       />
       <Servicio servicio={servicio} setServicio={setServicio} />
-      <Humo humo={humo} setHumo={setHumo} />
+      {/* <Humo humo={humo} setHumo={setHumo} /> */}
       <button
         className="mt-3 mb-2 form__button form__button__submit"
         type="submit"

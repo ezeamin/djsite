@@ -4,8 +4,14 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Bg from "./components/bg/Bg";
 import PanelPresupuestar from "./components/presupuestar/PanelPresupuestar";
 import PanelFechas from "./components/fechas/PanelFechas";
+import React from "react";
+import { ping } from "./api/fetchingFunctions";
 
 function App() {
+  React.useEffect(() => {
+    ping();
+  }, []);
+
   return (
     <div className="App">
       <Bg>
