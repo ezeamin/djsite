@@ -58,6 +58,7 @@ const PanelFechas = () => {
                 name={turno.name}
                 turno={turno.turno}
                 formattedFecha={fecha.formattedFecha}
+                isFechaOcupada={turno.isFechaOcupada}
               />
             );
           });
