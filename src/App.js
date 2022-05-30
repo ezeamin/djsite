@@ -8,6 +8,7 @@ import { AuthProvider } from "./context/AuthProvider";
 import Dashboard from "./components/admin/dashboard/Dashboard";
 import PanelNewEvento from "./components/admin/newEvento/PanelNewEvento";
 import Login from "./components/admin/login/Login";
+import PanelFechaOcupada from "./components/admin/newFechaOcupada/PanelFechaOcupada";
 
 //ola
 
@@ -28,7 +29,9 @@ function App() {
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/evento" element={<PanelNewEvento />} />
                   <Route path="/evento/:id/:id2" element={<PanelNewEvento edit/>} />
-                </Route>
+                  <Route path="/fechaocupada" element={<PanelFechaOcupada />} />
+                  <Route path="/fechaocupada/:id/:id2" element={<PanelFechaOcupada edit/>} />
+                </Route> 
               </Route>
             </Routes>
           </Router>

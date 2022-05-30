@@ -14,6 +14,9 @@ const Dashboard = () => {
       <button className="form__button form__button__submit" onClick={() => navigate("/evento")}>
         Cargar evento
       </button>
+      <button className="form__button form__button--blue mt-2" onClick={() => navigate("/fechaocupada")}>
+        Cargar fecha ocupada
+      </button>
       <List />
     </div>
   );
