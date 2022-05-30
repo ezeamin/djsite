@@ -162,7 +162,14 @@ const FormPresupuestar = (props) => {
         Calcular
       </button>
       <div className="text-center py-2 mb-1">
-        <a href="https://bit.ly/tyc-djezeamin-1" target="_blank" rel="noopener noreferrer" className="tyc">Terminos y condiciones</a>
+        <a
+          href="https://bit.ly/tyc-djezeamin-1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="tyc"
+        >
+          Terminos y condiciones
+        </a>
       </div>
     </form>
   );
