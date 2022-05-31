@@ -46,28 +46,34 @@ const PanelFechas = () => {
   }
   return (
     <div className="container py-2">
-    <BackButton />
-    <div className="my-3">
-      <Title text="Proximas fechas" />
-      {fechas.map((fecha, index) => {
-        if (fecha.turnos.length > 1) {
-          return fecha.turnos.map((turno, index) => {
+      <BackButton />
+      <div className="my-3">
+        <Title text="Proximas fechas" />
+        {fechas.map((fecha, index) => {
+          if (fecha.turnos.length > 1) {
+            return fecha.turnos.map((turno, index) => {
+              return (
+                <FechaItem
+                  key={index}
+                  name={turno.name}
+                  turno={turno.turno}
+                  formattedFecha={fecha.formattedFecha}
+                  isFechaOcupada={turno.isFechaOcupada || false}
+                />
+              );
+            });
+          } else
             return (
               <FechaItem
-                key={index}
-                name={turno.name}
-                turno={turno.turno}
+                name={fecha.turnos[0].name}
+                turno={fecha.turnos[0].turno}
                 formattedFecha={fecha.formattedFecha}
-                isFechaOcupada={turno.isFechaOcupada}
+                isFechaOcupada={fecha.turnos[0].isFechaOcupada || false}
+                key={index}
               />
             );
-          });
-        } else
-          return (
-            <FechaItem name={fecha.turnos[0].name} turno={fecha.turnos[0].turno} formattedFecha={fecha.formattedFecha} key={index} />
-          );
-      })}
-    </div>
+        })}
+      </div>
     </div>
   );
 };
