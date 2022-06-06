@@ -5,13 +5,9 @@
 }
 
 .event__container--special{
-  background-color: #ffa3a385;
+  background-color: #99c9ff85;
 }
 
 .event__title {
   color: #2f2f2f;
-}
-
-.event__title--special {
-  line-height: 20px;
 }
