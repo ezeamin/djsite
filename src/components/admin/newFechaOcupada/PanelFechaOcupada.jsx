@@ -28,7 +28,7 @@ const PanelFechaOcupada = (props) => {
     else setLoading(false);
   }, [eventoId, fechaId, props.edit]);
 
-  const title = props.edit ? "Editar fecha" : "Nueva fecha";
+  const title = props.edit ? "Editar compromiso" : "Nuevo compromiso";
 
   return (
     <div className="container my-2">

@@ -15,7 +15,7 @@ const Dashboard = () => {
         Cargar evento
       </button>
       <button className="form__button form__button--blue mt-2" onClick={() => navigate("/fechaocupada")}>
-        Cargar fecha ocupada
+        Cargar compromiso
       </button>
       <List />
     </div>

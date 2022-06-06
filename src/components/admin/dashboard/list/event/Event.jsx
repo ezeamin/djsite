@@ -17,8 +17,13 @@ const Event = (props) => {
         navigate(`/fechaocupada/${props.fechaId}/${props._id}`);
         break;
       case "Whatsapp":
-        const url = `https://wa.me/+549${props.client.phone}`;
-        window.open(url, "_blank").focus();
+        const urlWpp = `https://wa.me/+549${props.client.phone}`;
+        window.open(urlWpp, "_blank").focus();
+        break;
+      case "Navegar":
+        const destination = encodeURI(props.ubicacion);
+        const urlGM = `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
+        window.open(urlGM, "_blank").focus();
         break;
       default:
         break;
@@ -120,16 +125,16 @@ const Event = (props) => {
       </div>
       <div className="event__buttons mt-3">
         <button
-          className="form__button form__button__submit"
+          className="form__button form__button__submit w-100"
           onClick={() => handleClick("Modificar")}
         >
           Modificar
         </button>
         <button
-          className="form__button form__button--blue"
-          onClick={() => handleClick("Asistir")}
+          className="form__button form__button--car"
+          onClick={() => handleClick("Navegar")}
         >
-          Asistir
+          <i className="fa-solid fa-car-side"></i>
         </button>
         <button
           className="form__button form__button--wpp"
@@ -138,6 +143,12 @@ const Event = (props) => {
           <i className="fa-brands fa-whatsapp" />
         </button>
       </div>
+        <button
+          className="form__button  form__button--blue w-100 mt-2"
+          onClick={() => handleClick("Asistir")}
+        >
+          Asistir
+        </button>
     </div>
   );
 };

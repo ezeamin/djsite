@@ -4,8 +4,8 @@
   color: #2f2f2f;
 }
 
-.list__container--ocupada{
-  background-color: rgba(255, 172, 172, 0.486);
+.list__container--ocupada {
+  background-color: #99c9ff85;
   color: #2f2f2f;
 }
 
@@ -55,7 +55,7 @@
   ) !important;
 }
 
-.form__button--wpp{
+.form__button--wpp {
   color: #fff !important;
   width: 50px !important;
   padding: 0.5rem 1.1rem !important;
@@ -64,6 +64,11 @@
     var(--color-green-dark) 0%,
     var(--color-green-light) 100%
   ) !important;
+}
+
+.form__button--car {
+  width: 50px !important;
+  padding: 0.5rem 0.9rem !important;
 }
 
 @media screen and (min-width: 992px) {
