@@ -1,6 +1,7 @@
 import React from "react";
 import { fetchFechas } from "../../api/fetchingFunctions";
 import BackButton from "../backButton/BackButton";
+import Info from "../presupuestar/info/Info";
 import LoadingScreen from "../presupuestar/loadingScreen/LoadingScreen";
 import Title from "../title/Title";
 import FechaItem from "./FechaItem";
@@ -49,6 +50,7 @@ const PanelFechas = () => {
       <BackButton />
       <div className="my-3">
         <Title text="Proximas fechas" />
+        <Info />
         {fechas.map((fecha, index) => {
           if (fecha.turnos.length > 1) {
             return fecha.turnos.map((turno, index) => {

@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import BackButton from "../backButton/BackButton";
 import Title from "../title/Title";
 import FormPresupuestar from "./formPresupuestar/FormPresupuestar";
+import Info from "./info/Info";
 import "./presupuestar.css";
 import Price from "./price/Price";
 
@@ -29,6 +30,7 @@ const PanelPresupuestar = () => {
         <Price price={price} estMay={estMay} estMen={estMen} />
       </div>
       <Title text="Presupuestar" />
+      <Info />
       <FormPresupuestar
         setEstMay={setEstMay}
         setEstMen={setEstMen}

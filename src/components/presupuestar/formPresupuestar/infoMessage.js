@@ -43,7 +43,8 @@ export const infoMessage = (
 
       let ubic = ubicacion.replaceAll(" ", "%2520");
 
-      const link = `https://www.google.com/maps/search/?api=1%26query=${ubic}`;
+      const link = `https://www.google.com/maps/search/?api=1`;
+      const encodedLink = encodeURI(link) + `%26query=${ubic}`;
 
       const text = `Hola Ezequiel, soy ${name} y quiero presupuestar la siguiente fiesta:
           Fecha: ${formatFecha}
@@ -55,8 +56,11 @@ export const infoMessage = (
           El presupuesto es de: ${title}
           
           `;
+      const encodedText = encodeURI(text);
 
-      const url = `https://wa.me/+5493815038570?text=${encodeURI(text) + link}`;
+      const url = `https://wa.me/+5493815038570?text=${
+        encodedText + encodedLink
+      }`;
       window.open(url, "_blank").focus();
     }
   });
