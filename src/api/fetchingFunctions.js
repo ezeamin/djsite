@@ -35,6 +35,20 @@ export const fetchFechas = async () => {
   }
 };
 
+export const fetchFecha = async (date,turno) => {
+  try {
+    const res = await axios.put("/availabledate", { date,turno });
+
+    return res;
+  } catch (err) {
+    try {
+      return err.response.data.message;
+    } catch (err) {
+      return null;
+    }
+  }
+};
+
 export const ping = async () => {
   try {
     await axios.get("/");
