@@ -44,15 +44,15 @@
 .landing__button__proximamente {
   line-height: 15px;
 }
-/* 
-#landing__button-presupuestar {
+
+#landing__button-despedida {
   background: linear-gradient(
     45deg,
     var(--color-red-dark) 0%,
     var(--color-red-light) 100%
   );
 }
-
+/*
 #landing__button-presupuestar:not(.landing__button--disabled):hover {
   background-color: var(--color-red-dark);
 }

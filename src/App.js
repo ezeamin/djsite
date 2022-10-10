@@ -6,6 +6,7 @@ import PanelPresupuestar from "./components/presupuestar/PanelPresupuestar";
 import PanelFechas from "./components/fechas/PanelFechas";
 import React from "react";
 import { ping } from "./api/fetchingFunctions";
+import GoodbyeScreen from "./components/goodbye/GoodbyeScreen";
 
 function App() {
   React.useEffect(() => {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/presupuestar" element={<PanelPresupuestar />} />
             <Route path="/fechas" element={<PanelFechas />} />
+            <Route path="/despedida" element={<GoodbyeScreen />} />
           </Routes>
         </Router>
       </Bg>

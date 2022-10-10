@@ -19,6 +19,13 @@ const Landing = () => {
       </div>
       <div className="container mt-2 landing__buttons">
         <MainButton
+          text="Gracias"
+          link="/despedida"
+          icon="fa-heart"
+          type="despedida"
+          internal
+        />
+        <MainButton
           text="Presupuestar"
           link="/presupuestar"
           icon="fa-dollar-sign"

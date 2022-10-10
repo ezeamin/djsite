@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
 import { Badge } from "react-bootstrap";
+import Swal from "sweetalert2";
+import { fetchFecha } from "../../../api/fetchingFunctions";
 
 const Fecha = (props) => {
   // const [badgeStatus, setBadgeStatus] = React.useState("success");
@@ -11,17 +13,44 @@ const Fecha = (props) => {
   const turnoDia = useRef();
   const turnoNoche = useRef();
 
+  const { fecha, turno, setFecha, setTurno } = props;
+
+  React.useEffect(() => {
+    if (fecha && turno) {
+      const split = fecha.split("-");
+      const fechaValue = new Date(split[0], split[1] - 1, split[2]);
+
+      //check if date is available
+      fetchFecha(fechaValue, turno).then((res) => {
+        if (!res.data?.isAvailable) {
+          Swal.fire({
+            title: "Fecha no disponible",
+            text: "Perdon! la fecha seleccionada no esta disponible. Podes igualmente presupuestar para consultar el precio :D",
+            icon: "error",
+            confirmButtonText: "Ok",
+            showCancelButton: false,
+          });
+          fechaInput.current.classList = "form__input form__input--error";
+          setBadgeStatus("danger");
+          setBadgeText("no disponible");
+        } else {
+          fechaInput.current.classList = "form__input";
+          setBadgeStatus("success");
+          setBadgeText("disponible");
+        }
+      });
+    }
+  }, [fecha, turno]);
+
   const handleTurno = (e) => {
-    props.setTurno(e.target.value);
+    setTurno(e.target.value);
 
     if (e.target.value === "Dia") {
-      turnoDia.current.classList =
-        "form__button form__button--selected";
+      turnoDia.current.classList = "form__button form__button--selected";
       turnoNoche.current.classList = "form__button";
     } else {
       turnoDia.current.classList = "form__button";
-      turnoNoche.current.classList =
-        "form__button form__button--selected";
+      turnoNoche.current.classList = "form__button form__button--selected";
     }
   };
 
@@ -41,10 +70,9 @@ const Fecha = (props) => {
         fechaInput.current.classList = "form__input form__input--error";
         setBadgeStatus("danger");
         setBadgeText("no valida");
-      } else {
-        fechaInput.current.classList = "form__input";
-        setBadgeStatus("success");
-        // setBadgeText("disponible");
+      } else if (date.getDay() === 4) {
+        setBadgeStatus("warning");
+        setBadgeText("restringida");
       }
     }
   };
@@ -53,8 +81,7 @@ const Fecha = (props) => {
     <div className="form-group">
       <div className="form__fechaGroup mb-1">
         <p className="form__label m-0">Fecha</p>{" "}
-        {(/*(props.fecha && props.turno) ||*/
-          (badgeStatus === "danger")) && (
+        {((props.fecha && props.turno) || badgeStatus === "danger") && (
           <Badge bg={badgeStatus} className="mt-1 mb-0 form__fecha__badge">
             Fecha {badgeText}
           </Badge>
@@ -62,8 +89,8 @@ const Fecha = (props) => {
       </div>
       <input
         type="date"
-        value={props.fecha}
-        onChange={(e) => props.setFecha(e.target.value)}
+        value={fecha}
+        onChange={(e) => setFecha(e.target.value)}
         onBlur={handleFechaBlur}
         ref={fechaInput}
         className="form__input form__input__fecha"

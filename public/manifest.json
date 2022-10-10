@@ -3,9 +3,9 @@
   "name": "Dj Eze Amin",
   "icons": [
     {
-      "src": "/img/favicon.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "/img/logo.webp",
+      "type": "image/webp",
+      "sizes": "150x110"
     }
   ],
   "start_url": ".",

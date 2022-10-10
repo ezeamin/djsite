@@ -1,5 +1,5 @@
 import React from "react";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import BackButton from "../backButton/BackButton";
 import Title from "../title/Title";
 import FormPresupuestar from "./formPresupuestar/FormPresupuestar";
@@ -12,16 +12,6 @@ const PanelPresupuestar = () => {
   const [estMen, setEstMen] = React.useState(false);
 
   const [price, setPrice] = React.useState("0");
-
-  React.useEffect(() => {
-    Swal.fire({
-      // title: "",
-      text: "Antes de presupuestar, recordá revisar si la fecha de tu evento está disponible. Podés hacerlo en la opcion 'fechas disponibles' en el menú de inicio.",
-      icon: "info",
-      confirmButtonText: "Ok",
-      confirmButtonColor: "#ccc",
-    });
-  }, []);
 
   return (
     <div className="container">
