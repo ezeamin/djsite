@@ -20,7 +20,6 @@ const PanelPresupuestar = () => {
         <Price price={price} estMay={estMay} estMen={estMen} />
       </div>
       <Title text="Presupuestar" />
-      <Info />
       <FormPresupuestar
         setEstMay={setEstMay}
         setEstMen={setEstMen}

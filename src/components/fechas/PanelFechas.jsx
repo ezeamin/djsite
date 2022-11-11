@@ -50,7 +50,7 @@ const PanelFechas = () => {
       <BackButton />
       <div className="my-3">
         <Title text="Proximas fechas" />
-        <Info />
+        {/* <Info /> */}
         {fechas.map((fecha, index) => {
           if (fecha.turnos.length > 1) {
             return fecha.turnos.map((turno, index) => {
