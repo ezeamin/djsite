@@ -19,9 +19,9 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/presupuestar" element={<PanelPresupuestar />} />
+            {/* <Route path="/presupuestar" element={<PanelPresupuestar />} />
             <Route path="/fechas" element={<PanelFechas />} />
-            <Route path="/despedida" element={<GoodbyeScreen />} />
+            <Route path="/despedida" element={<GoodbyeScreen />} /> */}
           </Routes>
         </Router>
       </Bg>
