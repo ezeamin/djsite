@@ -5,7 +5,9 @@ import MainButton from './mainButton/MainButton';
 const Landing = () => {
   return (
     <>
-      <div className='pt-5 text-center'>
+      <img className='logo-img' src='/img/logo-new.webp' alt='logo Dj Eze Amin' />
+      <p>👀</p>
+      {/* <div className='pt-5 text-center'>
         <img
           className='landing__logo'
           src='/img/logo.webp'
@@ -42,7 +44,7 @@ const Landing = () => {
       </div>
       <div className='container text-center mt-4 mb-3'>
         <i className='my-0 text-light'>~ Life without music would be a mistake ~</i>
-      </div>
+      </div> */}
     </>
   );
 };
